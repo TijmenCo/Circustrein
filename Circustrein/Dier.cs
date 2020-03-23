@@ -17,13 +17,17 @@ namespace Circustrein
         }
         public string Name;
         public string Diet;
-        public Size Points;
-        public Dier(string name, string diet, Size points)
+        public int Points;
+
+        public Dier(string name, string diet, int points)
         {
             this.Name = name;
             this.Diet = diet;
             this.Points = points;
         }
+
+     
+
         public string Info
         {
             get

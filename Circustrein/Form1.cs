@@ -16,12 +16,13 @@ namespace Circustrein
         List<Dier> dieren = new List<Dier>();
         List<Dier> vleeseters = new List<Dier>();
         List<Dier> planteters = new List<Dier>();
-        Dier leeuw = new Dier("Leeuw", "Vlees", 2, 3);
-        Dier olifant = new Dier("Olifant", "Plant", 3, 5);
-        Dier aap = new Dier("Aap", "Plant", 2, 3);
-        Dier konijn = new Dier("Konijn", "Plant", 1, 1);
-        Dier zeehond = new Dier("Zeehond", "Vlees", 2, 3);
-        Dier parakiet = new Dier("Parakiet", "Plant", 1, 1);
+        Dier leeuw = new Dier("Leeuw", "Vlees", 3);
+        Dier olifant = new Dier("Olifant", "Plant", 5);
+        Dier aap = new Dier("Aap", "Plant", 2);
+        Dier konijn = new Dier("Konijn", "Plant", 1);
+        Dier zeehond = new Dier("Zeehond", "Vlees", 2);
+        Dier parakiet = new Dier("Parakiet", "Plant", 1);
+   
         public Form1()
         {
             InitializeComponent();
@@ -36,45 +37,80 @@ namespace Circustrein
 
         private void button1_Click(object sender, EventArgs e)
         {
-          vleeseters = dieren.Where(p => p.Diet == "Vlees").ToList();
-          planteters = dieren.Where(p => p.Diet == "Plant").ToList();
-            listBox1.DataSource = vleeseters;
-            listBox1.DisplayMember = "Info";
-            VleesCheck();
-            dieren.Sort(new SorteerVlees());
-            foreach (var p in dieren)
-            {
 
-            }
+
+            
+
+            vleeseters = dieren.Where(p => p.Diet == "Vlees").ToList();
+            planteters = dieren.Where(p => p.Diet == "Plant").ToList();
+            VleesCheck();
+            listBox1.DataSource = wachtrij;
+            listBox1.DisplayMember = "Info";
+            listBox2.DataSource = vleeseters;
+            listBox2.DisplayMember = "Info";
+            listBox3.DataSource = planteters;
+            listBox3.DisplayMember = "Info";
+           
+           
+
 
 
         }
         public void VleesCheck()
         {
-          //  int klein = planteters.Where(p => p.Size == "Middel");
-            // var wachtrij = planteters.Where(item => vleeseters.Select(item2 => item2).Contains());
-           // var wachtrij = planteters.Where(p => p.Size == "Middel");   
-
-        }
-  /*      public class SorteerVlees : IComparer<Dier>
-        {
-            public int Compare(Dier x, Dier y)
+          //  var query = planteters.Any(p => p.Points > vleeseters.Points);
+            var query1 = vleeseters.Where(dir1 => planteters.Any(dir2 => dir2.Points > dir1.Points));
+            var query2 = planteters.Where(x1 => vleeseters.Any(x2 => x1.Points > x2.Points));
+            foreach (Dier dir1 in query1)
             {
-                if ((x.Diet == "Vlees") && (y.Diet == "Plant"))
-                {
-                    if(y.Size > x.Size)
-                    {
-
-                    }
-                    else
-                    {
-                        wachtrij.Add(x);
-                    }
-                }
-                throw new NotImplementedException();
+                wachtrij.Add(dir1);
+                break;
             }
+            foreach (Dier x1 in query2)
+            {
+                wachtrij.Add(x1);
+                break;
+            }
+            PuntenCheck();
+            /*
+                        foreach (Dier vlees in vleeseters)
+                        {
+                            foreach (Dier plant in vleeseters)
+                                if (plant.Points > vlees.Points)
+                                {
+                                    wachtrij.Add(vlees);
+                                    wachtrij.Add(plant);
+                                }
+                        }
+                        */
+            //  int klein = planteters.Where(p => p.Size == "Middel");
+            // var wachtrij = planteters.Where(item => vleeseters.Select(item2 => item2).Contains());
+            // var wachtrij = planteters.Where(p => p.Size == "Middel");   
+
         }
-*/
+        public void PuntenCheck()
+        {
+        }
+          
+        /*      public class SorteerVlees : IComparer<Dier>
+              {
+                  public int Compare(Dier x, Dier y)
+                  {
+                      if ((x.Diet == "Vlees") && (y.Diet == "Plant"))
+                      {
+                          if(y.Size > x.Size)
+                          {
+
+                          }
+                          else
+                          {
+                              wachtrij.Add(x);
+                          }
+                      }
+                      throw new NotImplementedException();
+                  }
+              }
+      */
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             dieren.Add(leeuw);
