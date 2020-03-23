@@ -9,14 +9,27 @@ namespace Circustrein
     
     public class Dier
     { 
+        public enum Size
+        {
+            Klein = 1,
+            Gemiddeld = 3,
+            Groot = 5
+        }
         public string Name;
         public string Diet;
-        public string Size;
-        public Dier(string name, string diet, string size)
+        public Size Points;
+        public Dier(string name, string diet, Size points)
         {
             this.Name = name;
             this.Diet = diet;
-            this.Size = size;
+            this.Points = points;
+        }
+        public string Info
+        {
+            get
+            {
+                return $"{Name}";
+            }
         }
     }
 }
