@@ -47,6 +47,7 @@
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
+            this.listBox4 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -228,16 +229,26 @@
             // 
             this.listBox3.FormattingEnabled = true;
             this.listBox3.ItemHeight = 16;
-            this.listBox3.Location = new System.Drawing.Point(458, 242);
+            this.listBox3.Location = new System.Drawing.Point(387, 242);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(120, 84);
             this.listBox3.TabIndex = 27;
+            // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.ItemHeight = 16;
+            this.listBox4.Location = new System.Drawing.Point(535, 242);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(120, 84);
+            this.listBox4.TabIndex = 28;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBox4);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.checkBox6);
@@ -286,6 +297,7 @@
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox listBox4;
     }
 }
 

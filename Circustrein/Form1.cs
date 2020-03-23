@@ -12,10 +12,12 @@ namespace Circustrein
 {
     public partial class Form1 : Form
     {
-        List<Dier> wachtrij = new List<Dier>();
-        List<Dier> dieren = new List<Dier>();
-        List<Dier> vleeseters = new List<Dier>();
-        List<Dier> planteters = new List<Dier>();
+        int count;
+        Wagon wagonRef = new Wagon();
+      public List<Dier> wachtrij = new List<Dier>();
+      public List<Dier> dieren = new List<Dier>();
+      public  List<Dier> vleeseters = new List<Dier>();
+      public  List<Dier> planteters = new List<Dier>();
         Dier leeuw = new Dier("Leeuw", "Vlees", 3);
         Dier olifant = new Dier("Olifant", "Plant", 5);
         Dier aap = new Dier("Aap", "Plant", 2);
@@ -43,6 +45,11 @@ namespace Circustrein
 
             vleeseters = dieren.Where(p => p.Diet == "Vlees").ToList();
             planteters = dieren.Where(p => p.Diet == "Plant").ToList();
+            var query1 = vleeseters.Where(z1 => planteters.Any(z2 => z2.Points > z1.Points));
+            foreach (Dier dir1 in query1)
+            {
+                count++;
+            }
             VleesCheck();
             listBox1.DataSource = wachtrij;
             listBox1.DisplayMember = "Info";
@@ -50,67 +57,73 @@ namespace Circustrein
             listBox2.DisplayMember = "Info";
             listBox3.DataSource = planteters;
             listBox3.DisplayMember = "Info";
-           
-           
+            listBox4.DataSource = wagonRef.dierenInWagon;
+            listBox4.DisplayMember = "Info";
+
+
 
 
 
         }
         public void VleesCheck()
         {
-          //  var query = planteters.Any(p => p.Points > vleeseters.Points);
-            var query1 = vleeseters.Where(dir1 => planteters.Any(dir2 => dir2.Points > dir1.Points));
-            var query2 = planteters.Where(x1 => vleeseters.Any(x2 => x1.Points > x2.Points));
-            foreach (Dier dir1 in query1)
+            for (int i = 0; i <= count; i++)
             {
-                wachtrij.Add(dir1);
-                break;
-            }
-            foreach (Dier x1 in query2)
-            {
-                wachtrij.Add(x1);
-                break;
-            }
-            PuntenCheck();
-            /*
-                        foreach (Dier vlees in vleeseters)
-                        {
-                            foreach (Dier plant in vleeseters)
-                                if (plant.Points > vlees.Points)
-                                {
-                                    wachtrij.Add(vlees);
-                                    wachtrij.Add(plant);
-                                }
-                        }
-                        */
-            //  int klein = planteters.Where(p => p.Size == "Middel");
-            // var wachtrij = planteters.Where(item => vleeseters.Select(item2 => item2).Contains());
-            // var wachtrij = planteters.Where(p => p.Size == "Middel");   
 
+
+                //  var query = planteters.Any(p => p.Points > vleeseters.Points);
+                var query1 = vleeseters.Where(dir1 => planteters.Any(dir2 => dir2.Points > dir1.Points));
+                var query2 = planteters.Where(x1 => vleeseters.Any(x2 => x1.Points > x2.Points));
+
+
+                foreach (Dier dir1 in query1)
+                {
+                    var vdier = dir1;
+                    wachtrij.Add(dir1);
+                    vleeseters.Remove(dir1);
+                    break;
+                }
+                foreach (Dier x1 in query2)
+                {
+                    var pdier = x1;
+                    wachtrij.Add(x1);
+                    planteters.Remove(x1);
+                    break;
+                }
+                puntencheck();
+            }
+
+        }
+        public void puntencheck()
+        {
+            foreach (Dier dier in wachtrij)
+            {
+                wagonRef.tijdigePunten += dier.Points;
+            }
+            if (wagonRef.capacity >= 10)
+            {
+                wagonRef.dierenInWagon.AddRange(wachtrij);
+                wachtrij.Clear();
+            }
+            else
+            {
+                var query2 = planteters.Where(y1 => vleeseters.Any(y2 => y1.Points > y2.Points));
+                foreach (Dier y1 in query2)
+                {
+                    var pdier = y1;
+                    wachtrij.Add(y1);
+                    planteters.Remove(y1);
+                    break;
+                }
+                puntencheck();
+            }
         }
         public void PuntenCheck()
         {
+        
         }
           
-        /*      public class SorteerVlees : IComparer<Dier>
-              {
-                  public int Compare(Dier x, Dier y)
-                  {
-                      if ((x.Diet == "Vlees") && (y.Diet == "Plant"))
-                      {
-                          if(y.Size > x.Size)
-                          {
-
-                          }
-                          else
-                          {
-                              wachtrij.Add(x);
-                          }
-                      }
-                      throw new NotImplementedException();
-                  }
-              }
-      */
+        
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             dieren.Add(leeuw);
