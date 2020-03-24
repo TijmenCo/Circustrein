@@ -31,23 +31,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.buttonCalculate = new System.Windows.Forms.Button();
+            this.listBoxAnimals = new System.Windows.Forms.ListBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.listBoxWagons = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -77,33 +72,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Aap";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(403, 59);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Wagon 1";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(494, 59);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 17);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Wagon 2";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(590, 59);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 17);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Wagon 3";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -131,24 +99,24 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Parakiet";
             // 
-            // button1
+            // buttonCalculate
             // 
-            this.button1.Location = new System.Drawing.Point(298, 387);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Bereken";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCalculate.Location = new System.Drawing.Point(298, 387);
+            this.buttonCalculate.Name = "buttonCalculate";
+            this.buttonCalculate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCalculate.TabIndex = 18;
+            this.buttonCalculate.Text = "Bereken";
+            this.buttonCalculate.UseVisualStyleBackColor = true;
+            this.buttonCalculate.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listBox1
+            // listBoxAnimals
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(387, 117);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 84);
-            this.listBox1.TabIndex = 19;
+            this.listBoxAnimals.FormattingEnabled = true;
+            this.listBoxAnimals.ItemHeight = 16;
+            this.listBoxAnimals.Location = new System.Drawing.Point(377, 115);
+            this.listBoxAnimals.Name = "listBoxAnimals";
+            this.listBoxAnimals.Size = new System.Drawing.Size(120, 84);
+            this.listBoxAnimals.TabIndex = 19;
             // 
             // checkBox1
             // 
@@ -216,55 +184,32 @@
             this.checkBox6.UseVisualStyleBackColor = true;
             this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
             // 
-            // listBox2
+            // listBoxWagons
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(535, 117);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 84);
-            this.listBox2.TabIndex = 26;
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 16;
-            this.listBox3.Location = new System.Drawing.Point(387, 242);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(120, 84);
-            this.listBox3.TabIndex = 27;
-            // 
-            // listBox4
-            // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 16;
-            this.listBox4.Location = new System.Drawing.Point(535, 242);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 84);
-            this.listBox4.TabIndex = 28;
+            this.listBoxWagons.FormattingEnabled = true;
+            this.listBoxWagons.ItemHeight = 16;
+            this.listBoxWagons.Location = new System.Drawing.Point(377, 242);
+            this.listBoxWagons.Name = "listBoxWagons";
+            this.listBoxWagons.Size = new System.Drawing.Size(120, 84);
+            this.listBoxWagons.TabIndex = 28;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBox4);
-            this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.listBoxWagons);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.listBoxAnimals);
+            this.Controls.Add(this.buttonCalculate);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -281,23 +226,18 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button buttonCalculate;
+        private System.Windows.Forms.ListBox listBoxAnimals;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.ListBox listBoxWagons;
     }
 }
 

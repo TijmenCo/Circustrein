@@ -45,20 +45,17 @@ namespace Circustrein
             VleesCheck();
             foreach(Wagon wagon in wagons)
             {
-                listBox4.Items.Add(wagon);
-                
+                listBoxWagons.Items.Add(wagon);
+                foreach(Dier dier in wagon.DierenInWagon.ToList())
+                {
+                    listBoxAnimals.Items.Add(dier);
+                }
             }
           
           
-            listBox1.DisplayMember = "Info";
-         //   listBox2.DataSource = vleeseters;
-            listBox2.DisplayMember = "Info";
-           // listBox3.DataSource = planteters;
-            listBox3.DisplayMember = "Info";
-            
-            listBox4.DisplayMember = "WagonInfo";
+          listBoxAnimals.DisplayMember = "Info";
 
-
+          listBoxWagons.DisplayMember = "WagonInfo";
 
 
 
@@ -68,8 +65,6 @@ namespace Circustrein
         
             var goodVleeseters = vleeseters.Where(z1 => planteters.Any(z2 => z1.Points < z2.Points));
             var goodPlanteters = planteters.Where(y1 => vleeseters.Any(y2 => y1.Points > y2.Points));
-            listBox1.DataSource = goodVleeseters.ToList();
-            listBox2.DataSource = goodPlanteters.ToList();
             if (!goodPlanteters.Any())
             {
                 foreach (Dier dier in goodVleeseters.ToList())
@@ -99,10 +94,13 @@ namespace Circustrein
                     {
                         foreach (Dier dier2 in goodPlanteters.ToList())
                         {
-                            wagon.DierenInWagon.Add(dier2);
-                            wagon.capacity -= dier2.Points;
-                            goodPlanteters.ToList().Remove(dier2);
-                            planteters.Remove(dier2);
+                            if (wagon.capacity >= 0)
+                            {
+                                wagon.DierenInWagon.Add(dier2);
+                                wagon.capacity -= dier2.Points;
+                                goodPlanteters.ToList().Remove(dier2);
+                                planteters.Remove(dier2);
+                            }
                         }
                     }
                 }
