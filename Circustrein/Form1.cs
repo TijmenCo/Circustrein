@@ -12,7 +12,8 @@ namespace Circustrein
 {
     public partial class Form1 : Form
     {
-        int count; 
+        
+      public List<Wagon> wagons = new List<Wagon>();
       public List<Dier> wachtrij = new List<Dier>();
       public List<Dier> dieren = new List<Dier>();
       public  List<Dier> vleeseters = new List<Dier>();
@@ -42,14 +43,23 @@ namespace Circustrein
             vleeseters = dieren.Where(p => p.Diet == "Vlees").ToList();
             planteters = dieren.Where(p => p.Diet == "Plant").ToList();
             VleesCheck();
-            listBox1.DataSource = wachtrij;
+            foreach(Wagon wagon in wagons)
+            {
+                listBox4.Items.Add(wagon);
+                foreach (Dier dier in wagon.DierenInWagon)
+                {
+                    listBox1.Items.Add(dier);
+                }
+            }
+          
+          
             listBox1.DisplayMember = "Info";
             listBox2.DataSource = vleeseters;
             listBox2.DisplayMember = "Info";
             listBox3.DataSource = planteters;
             listBox3.DisplayMember = "Info";
-          //listBox4.DataSource = Wagon.dierenInWagon;
-            listBox4.DisplayMember = "Info";
+            
+            listBox4.DisplayMember = "WagonInfo";
 
 
 
@@ -67,13 +77,16 @@ namespace Circustrein
                 {
                     //new wagon
                     Wagon wagon = new Wagon(10);
+                    wagons.Add(wagon);
                     //add animals to list in wagon
                     wagon.DierenInWagon.Add(dier);
+                  //  vleeseters.Remove(dier);
                 }
             }
             else
             {
                 Wagon wagon = new Wagon(10);
+                wagons.Add(wagon);
                 //create new wagon
                 foreach (Dier dier in goodPlanteters)
                 {
@@ -81,6 +94,7 @@ namespace Circustrein
                     {
                         wagon.DierenInWagon.Add(dier);
                         wagon.capacity -= dier.Points;
+                      //  planteters.Remove(dier);
                     }
                     foreach (Dier dier2 in goodVleeseters)
                     {
@@ -88,6 +102,7 @@ namespace Circustrein
                         {
                             wagon.DierenInWagon.Add(dier2);
                             wagon.capacity -= dier2.Points;
+                         //   vleeseters.Remove(dier2);
                         }
 
                     }
@@ -128,6 +143,7 @@ namespace Circustrein
         public void plantenCheck()
         {
             Wagon wagon = new Wagon(10);
+            wagons.Add(wagon);
             foreach (Dier dier in planteters)
             {
                 if (wagon.capacity >= 0)
@@ -135,6 +151,8 @@ namespace Circustrein
                     if (planteters.Any())
                     {
                         wagon.DierenInWagon.Add(dier);
+                        wagon.capacity -= dier.Points;
+                    //    planteters.Remove(dier);
                     }
                 }
                 else
@@ -142,6 +160,7 @@ namespace Circustrein
                     if (planteters.Any())
                     {
                         Wagon wagon2 = new Wagon(10);
+                        wagons.Add(wagon);
                     }
                 }
 

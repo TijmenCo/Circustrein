@@ -21,30 +21,12 @@ namespace Circustrein
             this.capacity = Capacity;
         }
         public List<Dier> DierenInWagon { get => dierenInWagon; set => dierenInWagon = value; }
-        /*
-        public void puntencheck()
+        public string WagonInfo
         {
-            foreach (Dier dier in home.wachtrij)
+            get
             {
-                tijdigePunten += dier.Points;
-            }
-            if (capacity >= 10)
-            {
-                dierenInWagon.AddRange(home.wachtrij);
-            }
-            else
-            {
-                var query2 = home.planteters.Where(x1 => home.vleeseters.Any(x2 => x1.Points > x2.Points));
-                foreach (Dier x1 in query2)
-                {
-                    var pdier = x1;
-                    home.wachtrij.Add(x1);
-                    home.planteters.Remove(x1);
-                    break;
-                }
-                puntencheck();
+                return $"{"Wagon:" + capacity}";
             }
         }
-        */
     }
 }

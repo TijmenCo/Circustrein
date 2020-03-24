@@ -9,12 +9,6 @@ namespace Circustrein
     
     public class Dier
     { 
-        public enum Size
-        {
-            Klein = 1,
-            Gemiddeld = 3,
-            Groot = 5
-        }
         public string Name;
         public string Diet;
         public int Points;
