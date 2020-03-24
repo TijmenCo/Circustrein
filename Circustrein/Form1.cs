@@ -20,9 +20,9 @@ namespace Circustrein
       public  List<Dier> planteters = new List<Dier>();
         Dier leeuw = new Dier("Leeuw", "Vlees", 3);
         Dier olifant = new Dier("Olifant", "Plant", 5);
-        Dier aap = new Dier("Aap", "Plant", 2);
+        Dier aap = new Dier("Aap", "Plant", 3);
         Dier konijn = new Dier("Konijn", "Plant", 1);
-        Dier zeehond = new Dier("Zeehond", "Vlees", 2);
+        Dier zeehond = new Dier("Zeehond", "Vlees", 3);
         Dier parakiet = new Dier("Parakiet", "Plant", 1);
    
         public Form1()
@@ -46,17 +46,14 @@ namespace Circustrein
             foreach(Wagon wagon in wagons)
             {
                 listBox4.Items.Add(wagon);
-                foreach (Dier dier in wagon.DierenInWagon)
-                {
-                    listBox1.Items.Add(dier);
-                }
+                
             }
           
           
             listBox1.DisplayMember = "Info";
-            listBox2.DataSource = vleeseters;
+         //   listBox2.DataSource = vleeseters;
             listBox2.DisplayMember = "Info";
-            listBox3.DataSource = planteters;
+           // listBox3.DataSource = planteters;
             listBox3.DisplayMember = "Info";
             
             listBox4.DisplayMember = "WagonInfo";
@@ -71,44 +68,67 @@ namespace Circustrein
         
             var goodVleeseters = vleeseters.Where(z1 => planteters.Any(z2 => z1.Points < z2.Points));
             var goodPlanteters = planteters.Where(y1 => vleeseters.Any(y2 => y1.Points > y2.Points));
+            listBox1.DataSource = goodVleeseters.ToList();
+            listBox2.DataSource = goodPlanteters.ToList();
             if (!goodPlanteters.Any())
             {
-                foreach (Dier dier in goodVleeseters)
+                foreach (Dier dier in goodVleeseters.ToList())
                 {
                     //new wagon
                     Wagon wagon = new Wagon(10);
                     wagons.Add(wagon);
                     //add animals to list in wagon
                     wagon.DierenInWagon.Add(dier);
-                  //  vleeseters.Remove(dier);
+                    wagon.capacity -= dier.Points;
+                    vleeseters.Remove(dier);
                 }
             }
             else
             {
-                Wagon wagon = new Wagon(10);
-                wagons.Add(wagon);
                 //create new wagon
-                foreach (Dier dier in goodPlanteters)
+                foreach (Dier dier in goodVleeseters.ToList())
                 {
-                    if (wagon.capacity > 0)
+                    //new wagon
+                    Wagon wagon = new Wagon(10);
+                    wagons.Add(wagon);
+                    //add animals to list in wagon
+                    wagon.DierenInWagon.Add(dier);
+                    wagon.capacity -= dier.Points;
+                    vleeseters.Remove(dier);
+                    if (goodPlanteters.Any())
                     {
-                        wagon.DierenInWagon.Add(dier);
-                        wagon.capacity -= dier.Points;
-                      //  planteters.Remove(dier);
-                    }
-                    foreach (Dier dier2 in goodVleeseters)
-                    {
-                        if (wagon.capacity > 0)
+                        foreach (Dier dier2 in goodPlanteters.ToList())
                         {
                             wagon.DierenInWagon.Add(dier2);
                             wagon.capacity -= dier2.Points;
-                         //   vleeseters.Remove(dier2);
+                            goodPlanteters.ToList().Remove(dier2);
+                            planteters.Remove(dier2);
+                        }
+                    }
+                }
+            
+             }
+             /*       foreach (Dier dier2 in goodVleeseters.ToList())
+                    {
+                        if (wagon.capacity >= 0)
+                        {
+                            wagon.DierenInWagon.Add(dier2);
+                            wagon.capacity -= dier2.Points;
+                            vleeseters.Remove(dier2);  
+                        }
+                        else
+                        {
+                            Wagon wagon2 = new Wagon(10);
+                            wagons.Add(wagon);
+                            wagon.DierenInWagon.Add(dier2);
+                            wagon.capacity -= dier2.Points;
+                            vleeseters.Remove(dier2);
                         }
 
                     }
 
-                }
-            }
+                
+            }*/
             plantenCheck();
             /*
             for (int i = 0; i <= count; i++)
@@ -144,16 +164,18 @@ namespace Circustrein
         {
             Wagon wagon = new Wagon(10);
             wagons.Add(wagon);
-            foreach (Dier dier in planteters)
+            foreach (Dier dier in planteters.ToList())
             {
-                if (wagon.capacity >= 0)
+                if (wagon.capacity > 0)
                 {
                     if (planteters.Any())
                     {
                         wagon.DierenInWagon.Add(dier);
                         wagon.capacity -= dier.Points;
-                    //    planteters.Remove(dier);
+                        planteters.Remove(dier);
+
                     }
+
                 }
                 else
                 {
@@ -163,7 +185,6 @@ namespace Circustrein
                         wagons.Add(wagon);
                     }
                 }
-
             }
         }
      
