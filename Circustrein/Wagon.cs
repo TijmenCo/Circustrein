@@ -11,13 +11,16 @@ namespace Circustrein
        
 
         public int tijdigePunten;
-        public List<Dier> dierenInWagon = new List<Dier>();
+        private List<Dier> dierenInWagon = new List<Dier>();
         public int capacity = 10;
+          
       
-        public Wagon()
+        public Wagon(int Capacity)
         {
-            
+            this.DierenInWagon = DierenInWagon;
+            this.capacity = Capacity;
         }
+        public List<Dier> DierenInWagon { get => dierenInWagon; set => dierenInWagon = value; }
         /*
         public void puntencheck()
         {
