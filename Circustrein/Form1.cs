@@ -39,16 +39,8 @@ namespace Circustrein
         private void button1_Click(object sender, EventArgs e)
         {
 
-
-            
-
             vleeseters = dieren.Where(p => p.Diet == "Vlees").ToList();
             planteters = dieren.Where(p => p.Diet == "Plant").ToList();
-            var query1 = vleeseters.Where(z1 => planteters.Any(z2 => z2.Points > z1.Points));
-            foreach (Dier dir1 in query1)
-            {
-                count++;
-            }
             VleesCheck();
             listBox1.DataSource = wachtrij;
             listBox1.DisplayMember = "Info";
@@ -56,7 +48,7 @@ namespace Circustrein
             listBox2.DisplayMember = "Info";
             listBox3.DataSource = planteters;
             listBox3.DisplayMember = "Info";
-            listBox4.DataSource = wagonRef.dierenInWagon;
+          //listBox4.DataSource = Wagon.dierenInWagon;
             listBox4.DisplayMember = "Info";
 
 
@@ -66,7 +58,43 @@ namespace Circustrein
         }
         public void VleesCheck()
         {
-            puntencheck();
+        
+            var goodVleeseters = vleeseters.Where(z1 => planteters.Any(z2 => z1.Points < z2.Points));
+            var goodPlanteters = planteters.Where(y1 => vleeseters.Any(y2 => y1.Points > y2.Points));
+            if (!goodPlanteters.Any())
+            {
+                foreach (Dier dier in goodVleeseters)
+                {
+                    //new wagon
+                    Wagon wagon = new Wagon(10);
+                    //add animals to list in wagon
+                    wagon.DierenInWagon.Add(dier);
+                }
+            }
+            else
+            {
+                Wagon wagon = new Wagon(10);
+                //create new wagon
+                foreach (Dier dier in goodPlanteters)
+                {
+                    if (wagon.capacity > 0)
+                    {
+                        wagon.DierenInWagon.Add(dier);
+                        wagon.capacity -= dier.Points;
+                    }
+                    foreach (Dier dier2 in goodVleeseters)
+                    {
+                        if (wagon.capacity > 0)
+                        {
+                            wagon.DierenInWagon.Add(dier2);
+                            wagon.capacity -= dier2.Points;
+                        }
+
+                    }
+
+                }
+            }
+            plantenCheck();
             /*
             for (int i = 0; i <= count; i++)
             {
@@ -97,52 +125,29 @@ namespace Circustrein
         }
         */
         }
-        public void puntencheck()
+        public void plantenCheck()
         {
-          
-                var goodVleeseters = vleeseters.Where(z1 => planteters.Any(z2 => z1.Points < z2.Points));
-                var goodPlanteters = planteters.Where(y1 => vleeseters.Any(y2 => y1.Points > y2.Points));
-                if(!goodPlanteters.Any())
+            Wagon wagon = new Wagon(10);
+            foreach (Dier dier in planteters)
+            {
+                if (wagon.capacity >= 0)
                 {
-                foreach(Dier dier in goodVleeseters)
-                {
-                    //new wagon
-                    Wagon wagon = new Wagon(10);
-                    //add animals to list in wagon
-                    wagon.DierenInWagon.Add(dier);
-                }
+                    if (planteters.Any())
+                    {
+                        wagon.DierenInWagon.Add(dier);
+                    }
                 }
                 else
                 {
-                Wagon wagon = new Wagon(10);
-                //create new wagon
-                foreach (Dier dier in goodPlanteters)
+                    if (planteters.Any())
                     {
-                    if(wagon.capacity > 0)
-                    {
-                        wagon.DierenInWagon.Add(dier);
-                        wagon.capacity -= dier.Points;
+                        Wagon wagon2 = new Wagon(10);
                     }
-                        foreach (Dier dier2 in goodVleeseters)
-                        {
-                        if (wagon.capacity > 0)
-                        {
-                            wagon.DierenInWagon.Add(dier2);
-                            wagon.capacity -= dier2.Points;
-                        }
-                          
-                        }
-
-                    } 
                 }
-            puntencheck();
-            
+
+            }
         }
-        public void PuntenCheck()
-        {
-        
-        }
-          
+     
         
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
