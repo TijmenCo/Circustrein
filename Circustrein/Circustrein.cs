@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Circustrein
 {
-    public partial class Form1 : Form
+    public partial class Circustrein : Form
     {
-      public static Form1 form1Ref;
+      public static Circustrein form1Ref;
       public List<Wagon> wagons = new List<Wagon>(); 
       public List<Animal> animals = new List<Animal>();
       public  List<Animal> carnivors = new List<Animal>();
@@ -24,7 +24,7 @@ namespace Circustrein
         Animal zeehond = new Animal("Zeehond", "Vlees", 3);
         Animal parakiet = new Animal("Parakiet", "Plant", 1);
    
-        public Form1()
+        public Circustrein()
         {
             InitializeComponent();
         }
@@ -39,15 +39,16 @@ namespace Circustrein
         private void button1_Click(object sender, EventArgs e)
         {
 
-            carnivors = animals.Where(p => p.Diet == "Vlees").ToList();
-            herbivors = animals.Where(p => p.Diet == "Plant").ToList();
+            DivideAnimals();
             vleesCheck();
             plantenCheck();
             ShowWagons();
-            
-
-
-
+  
+        }
+        public void DivideAnimals()
+        {
+            carnivors = animals.Where(p => p.Diet == "Vlees").ToList();
+            herbivors = animals.Where(p => p.Diet == "Plant").ToList();
         }
         public void ShowWagons()
         {
