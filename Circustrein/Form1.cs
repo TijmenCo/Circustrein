@@ -12,9 +12,8 @@ namespace Circustrein
 {
     public partial class Form1 : Form
     {
-        
-      public List<Wagon> wagons = new List<Wagon>();
-      public List<Dier> wachtrij = new List<Dier>();
+      public static Form1 form1Ref;
+      public List<Wagon> wagons = new List<Wagon>(); 
       public List<Dier> dieren = new List<Dier>();
       public  List<Dier> vleeseters = new List<Dier>();
       public  List<Dier> planteters = new List<Dier>();
@@ -42,25 +41,26 @@ namespace Circustrein
 
             vleeseters = dieren.Where(p => p.Diet == "Vlees").ToList();
             planteters = dieren.Where(p => p.Diet == "Plant").ToList();
-            VleesCheck();
-            foreach(Wagon wagon in wagons)
+            vleesCheck();
+            plantenCheck();
+            ShowWagons();
+            
+
+        }
+        public void ShowWagons()
+        {
+            foreach (Wagon wagon in wagons)
             {
                 listBoxWagons.Items.Add(wagon);
-                foreach(Dier dier in wagon.DierenInWagon.ToList())
+                foreach (Dier dier in wagon.DierenInWagon.ToList())
                 {
                     listBoxAnimals.Items.Add(dier);
                 }
             }
-          
-          
-          listBoxAnimals.DisplayMember = "Info";
-
-          listBoxWagons.DisplayMember = "WagonInfo";
-
-
-
+            listBoxAnimals.DisplayMember = "Info";
+            listBoxWagons.DisplayMember = "WagonInfo";
         }
-        public void VleesCheck()
+        public void vleesCheck()
         {
         
             var goodVleeseters = vleeseters.Where(z1 => planteters.Any(z2 => z1.Points < z2.Points));
@@ -69,10 +69,8 @@ namespace Circustrein
             {
                 foreach (Dier dier in goodVleeseters.ToList())
                 {
-                    //new wagon
                     Wagon wagon = new Wagon(10);
                     wagons.Add(wagon);
-                    //add animals to list in wagon
                     wagon.DierenInWagon.Add(dier);
                     wagon.capacity -= dier.Points;
                     vleeseters.Remove(dier);
@@ -80,13 +78,10 @@ namespace Circustrein
             }
             else
             {
-                //create new wagon
                 foreach (Dier dier in goodVleeseters.ToList())
                 {
-                    //new wagon
                     Wagon wagon = new Wagon(10);
                     wagons.Add(wagon);
-                    //add animals to list in wagon
                     wagon.DierenInWagon.Add(dier);
                     wagon.capacity -= dier.Points;
                     vleeseters.Remove(dier);
@@ -106,57 +101,6 @@ namespace Circustrein
                 }
             
              }
-             /*       foreach (Dier dier2 in goodVleeseters.ToList())
-                    {
-                        if (wagon.capacity >= 0)
-                        {
-                            wagon.DierenInWagon.Add(dier2);
-                            wagon.capacity -= dier2.Points;
-                            vleeseters.Remove(dier2);  
-                        }
-                        else
-                        {
-                            Wagon wagon2 = new Wagon(10);
-                            wagons.Add(wagon);
-                            wagon.DierenInWagon.Add(dier2);
-                            wagon.capacity -= dier2.Points;
-                            vleeseters.Remove(dier2);
-                        }
-
-                    }
-
-                
-            }*/
-            plantenCheck();
-            /*
-            for (int i = 0; i <= count; i++)
-            {
-
-
-                //  var query = planteters.Any(p => p.Points > vleeseters.Points);
-                var query1 = vleeseters.Where(dir1 => planteters.Any(dir2 => dir2.Points > dir1.Points));
-                var query2 = planteters.Where(x1 => vleeseters.Any(x2 => x1.Points > x2.Points));
-
-
-                foreach (Dier dir1 in query1)
-                {
-                    var vdier = dir1;
-                    wachtrij.Add(dir1);
-                    vleeseters.Remove(dir1);
-                    break;
-                }
-                foreach (Dier x1 in query2)
-                {
-                    var pdier = x1;
-                    wachtrij.Add(x1);
-                    planteters.Remove(x1);
-                    break;
-                }
-                puntencheck();
-            } 
-
-        }
-        */
         }
         public void plantenCheck()
         {
@@ -215,6 +159,16 @@ namespace Circustrein
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
             dieren.Add(parakiet);
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxAnimals_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

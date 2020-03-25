@@ -43,6 +43,8 @@
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.listBoxWagons = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -113,10 +115,11 @@
             // 
             this.listBoxAnimals.FormattingEnabled = true;
             this.listBoxAnimals.ItemHeight = 16;
-            this.listBoxAnimals.Location = new System.Drawing.Point(377, 115);
+            this.listBoxAnimals.Location = new System.Drawing.Point(576, 180);
             this.listBoxAnimals.Name = "listBoxAnimals";
             this.listBoxAnimals.Size = new System.Drawing.Size(120, 84);
             this.listBoxAnimals.TabIndex = 19;
+            this.listBoxAnimals.SelectedIndexChanged += new System.EventHandler(this.listBoxAnimals_SelectedIndexChanged);
             // 
             // checkBox1
             // 
@@ -188,16 +191,37 @@
             // 
             this.listBoxWagons.FormattingEnabled = true;
             this.listBoxWagons.ItemHeight = 16;
-            this.listBoxWagons.Location = new System.Drawing.Point(377, 242);
+            this.listBoxWagons.Location = new System.Drawing.Point(370, 180);
             this.listBoxWagons.Name = "listBoxWagons";
             this.listBoxWagons.Size = new System.Drawing.Size(120, 84);
             this.listBoxWagons.TabIndex = 28;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(573, 117);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 17);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Lijst van dieren";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(367, 117);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 17);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Lijst van wagons";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.listBoxWagons);
             this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.checkBox5);
@@ -230,14 +254,16 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button buttonCalculate;
-        private System.Windows.Forms.ListBox listBoxAnimals;
+        public System.Windows.Forms.ListBox listBoxAnimals;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.ListBox listBoxWagons;
+        public System.Windows.Forms.ListBox listBoxWagons;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
