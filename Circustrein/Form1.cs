@@ -14,15 +14,15 @@ namespace Circustrein
     {
       public static Form1 form1Ref;
       public List<Wagon> wagons = new List<Wagon>(); 
-      public List<Dier> animals = new List<Dier>();
-      public  List<Dier> carnivors = new List<Dier>();
-      public  List<Dier> herbivors = new List<Dier>();
-        Dier leeuw = new Dier("Leeuw", "Vlees", 3);
-        Dier olifant = new Dier("Olifant", "Plant", 5);
-        Dier aap = new Dier("Aap", "Plant", 3);
-        Dier konijn = new Dier("Konijn", "Plant", 1);
-        Dier zeehond = new Dier("Zeehond", "Vlees", 3);
-        Dier parakiet = new Dier("Parakiet", "Plant", 1);
+      public List<Animal> animals = new List<Animal>();
+      public  List<Animal> carnivors = new List<Animal>();
+      public  List<Animal> herbivors = new List<Animal>();
+        Animal leeuw = new Animal("Leeuw", "Vlees", 3);
+        Animal olifant = new Animal("Olifant", "Plant", 5);
+        Animal aap = new Animal("Aap", "Plant", 3);
+        Animal konijn = new Animal("Konijn", "Plant", 1);
+        Animal zeehond = new Animal("Zeehond", "Vlees", 3);
+        Animal parakiet = new Animal("Parakiet", "Plant", 1);
    
         public Form1()
         {
@@ -54,9 +54,9 @@ namespace Circustrein
             foreach (Wagon wagon in wagons)
             {
                 listBoxWagons.Items.Add(wagon);
-                foreach (Dier dier in wagon.AnimalsInWagon.ToList())
+                foreach (Animal animal in wagon.AnimalsInWagon.ToList())
                 {
-                    listBoxAnimals.Items.Add(dier);
+                    listBoxAnimals.Items.Add(animal);
                 }
             }
             listBoxAnimals.DisplayMember = "Info";
@@ -69,34 +69,34 @@ namespace Circustrein
             var goodHerbivors = herbivors.Where(y1 => carnivors.Any(y2 => y1.Points > y2.Points));
             if (!goodHerbivors.Any())
             {
-                foreach (Dier dier in goodCarnivors.ToList())
+                foreach (Animal animal in goodCarnivors.ToList())
                 {
                     Wagon wagon = new Wagon(10);
                     wagons.Add(wagon);
-                    wagon.AnimalsInWagon.Add(dier);
-                    wagon.capacity -= dier.Points;
-                    carnivors.Remove(dier);
+                    wagon.AnimalsInWagon.Add(animal);
+                    wagon.capacity -= animal.Points;
+                    carnivors.Remove(animal);
                 }
             }
             else
             {
-                foreach (Dier dier in goodCarnivors.ToList())
+                foreach (Animal animal in goodCarnivors.ToList())
                 {
                     Wagon wagon = new Wagon(10);
                     wagons.Add(wagon);
-                    wagon.AnimalsInWagon.Add(dier);
-                    wagon.capacity -= dier.Points;
-                    carnivors.Remove(dier);
+                    wagon.AnimalsInWagon.Add(animal);
+                    wagon.capacity -= animal.Points;
+                    carnivors.Remove(animal);
                     if (goodHerbivors.Any())
                     {
-                        foreach (Dier dier2 in goodHerbivors.ToList())
+                        foreach (Animal animal2 in goodHerbivors.ToList())
                         {
                             if (wagon.capacity >= 0)
                             {
-                                wagon.AnimalsInWagon.Add(dier2);
-                                wagon.capacity -= dier2.Points;
-                                goodHerbivors.ToList().Remove(dier2);
-                                herbivors.Remove(dier2);
+                                wagon.AnimalsInWagon.Add(animal2);
+                                wagon.capacity -= animal2.Points;
+                                goodHerbivors.ToList().Remove(animal2);
+                                herbivors.Remove(animal2);
                             }
                         }
                     }
@@ -108,15 +108,15 @@ namespace Circustrein
         {
             Wagon wagon = new Wagon(10);
             wagons.Add(wagon);
-            foreach (Dier dier in herbivors.ToList())
+            foreach (Animal animal in herbivors.ToList())
             {
                 if (wagon.capacity > 0)
                 {
                     if (herbivors.Any())
                     {
-                        wagon.AnimalsInWagon.Add(dier);
-                        wagon.capacity -= dier.Points;
-                        herbivors.Remove(dier);
+                        wagon.AnimalsInWagon.Add(animal);
+                        wagon.capacity -= animal.Points;
+                        herbivors.Remove(animal);
 
                     }
 

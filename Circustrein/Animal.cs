@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace Circustrein
 {
     
-    public class Dier
+    public class Animal
     { 
         public string Name;
         public string Diet;
         public int Points;
 
-        public Dier(string name, string diet, int points)
+        public Animal(string name, string diet, int points)
         {
             this.Name = name;
             this.Diet = diet;

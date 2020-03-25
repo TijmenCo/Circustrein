@@ -11,7 +11,7 @@ namespace Circustrein
        
 
  
-        private List<Dier> animalsInWagon = new List<Dier>();
+        private List<Animal> animalsInWagon = new List<Animal>();
         public int capacity = 10;
           
       
@@ -20,7 +20,7 @@ namespace Circustrein
             this.AnimalsInWagon = AnimalsInWagon;
             this.capacity = Capacity;
         }
-        public List<Dier> AnimalsInWagon { get => animalsInWagon; set => animalsInWagon = value; }
+        public List<Animal> AnimalsInWagon { get => animalsInWagon; set => animalsInWagon = value; }
         public string WagonInfo
         {
             get
