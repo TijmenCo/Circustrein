@@ -66,8 +66,9 @@ namespace Circustrein
         public void NewWagon(Animal animal)
         {
             Wagon wagon = new Wagon(10);
-            vleesCheck(animal);
+            //wagon.AnimalsInWagon.Add(animal);
             Wagons.Add(wagon);
+            vleesCheck(animal);
         } 
 
     }
