@@ -27,16 +27,17 @@ namespace Circustrein
                 return $"{"Wagon:" + capacity}";
             }
         }
-        public Animal CheckCompatability(Animal animal, List<Animal> herbivoren)
+        public bool CheckCompatability(Animal animal)
         {
-            foreach (Animal animalToCheck in herbivoren)
+           foreach(Animal checkAnimal in this.animalsInWagon)
             {
-                if (animal._Points < animalToCheck._Points)
+                if (animal._Diet == Animal.Diet.Carnivoor && checkAnimal._Diet == Animal.Diet.Carnivoor || animal._Diet == Animal.Diet.Carnivoor && checkAnimal._Points <= animal._Points)
                 {
-                    return animalToCheck;
+                    return false;
                 }
+
             }
-            return animal;
+            return true;
         }
         public bool CheckPoints(Animal animal)
         {
