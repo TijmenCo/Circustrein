@@ -43,14 +43,14 @@ namespace Circustrein
        
         public void ShowWagons()
         {
-            foreach (Wagon wagon in train.wagons)
+            foreach (Wagon wagon in train.Wagons)
             {
 
                 listBoxWagons.Items.Add(wagon);
-                foreach (Animal animal in wagon.AnimalsInWagon.ToList())
-                {
-                    listBoxAnimals.Items.Add(animal);
-                }
+              //  foreach (Animal animal in wagon.AnimalsInWagon.ToList())
+                //{
+                  //  listBoxAnimals.Items.Add(animal);
+               // }
             }
             listBoxAnimals.DisplayMember = "Info";
             listBoxWagons.DisplayMember = "WagonInfo";

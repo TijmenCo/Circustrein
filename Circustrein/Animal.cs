@@ -19,6 +19,7 @@ namespace Circustrein
            Carnivoor = 0,
            Herbivoor = 1
         }
+        public bool Used;
         public Points _Points;
         public string Name;
         public Diet _Diet;
