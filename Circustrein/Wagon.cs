@@ -27,5 +27,28 @@ namespace Circustrein
                 return $"{"Wagon:" + capacity}";
             }
         }
+        public Animal CheckCompatability(Animal animal, List<Animal> herbivoren)
+        {
+            foreach (Animal animalToCheck in herbivoren)
+            {
+                if (animal._Points < animalToCheck._Points)
+                {
+                    return animalToCheck;
+                }
+            }
+            return animal;
+        }
+        public bool CheckPoints(Animal animal)
+        {
+            if (this.capacity - animal._Points >= 0)
+            {
+                return true;
+            }
+            //The animal can't be added
+            else
+            {
+                return false;
+            }
+        }
     }
 }
