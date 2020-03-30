@@ -14,15 +14,20 @@ namespace Circustrein
             Middel = 3,
             Groot = 5
         }
+        public enum Diet
+        {
+           Carnivoor = 0,
+           Herbivoor = 1
+        }
         public Points _Points;
         public string Name;
-        public string Diet;
+        public Diet _Diet;
      
       
-        public Animal(string name, string diet, Points points)
+        public Animal(string name, Diet diet, Points points)
         {
             this.Name = name;
-            this.Diet = diet;
+            this._Diet = diet;
             this._Points = points;
         }
       

@@ -8,9 +8,10 @@ namespace Circustrein
 {
     public class Wagon
     {
-       
+        
         private List<Animal> animalsInWagon = new List<Animal>();
-        public int capacity = 10;
+        public int capacity;
+        public int maxCapacity;
           
       
         public Wagon(int Capacity)

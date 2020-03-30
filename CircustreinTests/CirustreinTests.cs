@@ -16,18 +16,18 @@ namespace Circustrein.Tests
         public void TestInitialize()
         {
             animals = new List<Animal>();
-            Animal leeuw = new Animal("Leeuw", "Vlees", 3);
-            Animal olifant = new Animal("Olifant", "Plant", 5);
-            Animal aap = new Animal("Aap", "Plant", 3);
-            Animal konijn = new Animal("Konijn", "Plant", 1);
-            Animal zeehond = new Animal("Zeehond", "Vlees", 3);
-           // Animal parakiet = new Animal("Parakiet", "Plant", 1);
+            Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
+            Animal olifant = new Animal("Olifant", Animal.Diet.Herbivoor, Animal.Points.Groot);
+            Animal aap = new Animal("Aap", Animal.Diet.Herbivoor, Animal.Points.Middel);
+            Animal konijn = new Animal("Konijn", Animal.Diet.Herbivoor, Animal.Points.Klein);
+            Animal zeehond = new Animal("Zeehond", Animal.Diet.Carnivoor, Animal.Points.Middel);
+            Animal parakiet = new Animal("Parakiet", Animal.Diet.Herbivoor, Animal.Points.Klein);
             animals.Add(leeuw);
             animals.Add(olifant);
             animals.Add(aap);
             animals.Add(konijn);
             animals.Add(zeehond);
-           // animals.Add(parakiet);
+            animals.Add(parakiet);
 
         }
         [TestMethod()]
@@ -35,8 +35,8 @@ namespace Circustrein.Tests
         {
             List<Animal> carnivors = new List<Animal>();
             List<Animal> herbivors = new List<Animal>();
-            carnivors = animals.Where(p => p.Diet == "Vlees").ToList();
-            herbivors = animals.Where(p => p.Diet == "Plant").ToList();
+            carnivors = animals.Where(p => p._Diet == Animal.Diet.Carnivoor).ToList();
+            herbivors = animals.Where(p => p._Diet == Animal.Diet.Herbivoor).ToList();
             int countCarnivors = carnivors.Count();
             int countHerbivors = herbivors.Count();
             Assert.AreEqual(2, countCarnivors);

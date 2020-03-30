@@ -15,12 +15,12 @@ namespace Circustrein
       public static Circustrein form1Ref;
         Train train = new Train();
 
-        Animal leeuw = new Animal("Leeuw", "Vlees", Animal.Points.Middel);
-        Animal olifant = new Animal("Olifant", "Plant", Animal.Points.Groot);
-        Animal aap = new Animal("Aap", "Plant", Animal.Points.Middel);
-        Animal konijn = new Animal("Konijn", "Plant", Animal.Points.Klein);
-        Animal zeehond = new Animal("Zeehond", "Vlees", Animal.Points.Middel);
-        Animal parakiet = new Animal("Parakiet", "Plant", Animal.Points.Klein);
+        Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
+        Animal olifant = new Animal("Olifant", Animal.Diet.Herbivoor, Animal.Points.Groot);
+        Animal aap = new Animal("Aap", Animal.Diet.Herbivoor, Animal.Points.Middel);
+        Animal konijn = new Animal("Konijn", Animal.Diet.Herbivoor, Animal.Points.Klein);
+        Animal zeehond = new Animal("Zeehond", Animal.Diet.Carnivoor, Animal.Points.Middel);
+        Animal parakiet = new Animal("Parakiet", Animal.Diet.Herbivoor, Animal.Points.Klein);
    
         public Circustrein()
         {

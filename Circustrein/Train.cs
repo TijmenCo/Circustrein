@@ -8,6 +8,7 @@ namespace Circustrein
 {
     public class Train
     {
+
         public List<Wagon> wagons = new List<Wagon>();
         public List<Animal> animals = new List<Animal>();
         public List<Animal> carnivors = new List<Animal>();
@@ -25,8 +26,8 @@ namespace Circustrein
         }
         public void DivideAnimals()
         {
-            carnivors = animals.Where(p => p.Diet == "Vlees").ToList();
-            herbivors = animals.Where(p => p.Diet == "Plant").ToList();
+            carnivors = animals.Where(p => p._Diet == Animal.Diet.Carnivoor).ToList();
+            herbivors = animals.Where(p => p._Diet == Animal.Diet.Herbivoor).ToList();
 
         }
         public void vleesCheck()
@@ -38,7 +39,7 @@ namespace Circustrein
             {
                 foreach (Animal animal in goodCarnivors.ToList())
                 {
-                    Wagon wagon = new Wagon(10);
+                    Wagon wagon = new Wagon(10); ;
                     wagons.Add(wagon);
                     wagon.AnimalsInWagon.Add(animal);
                     wagon.capacity -= Convert.ToInt32(animal._Points);
