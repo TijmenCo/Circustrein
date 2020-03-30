@@ -41,6 +41,7 @@ namespace Circustrein
               //  {
            //         NewWagon(animal);
               //  }
+             
                 foreach (Wagon wagon in Wagons)
                 {
                     if (wagon.CheckCompatability(animal) && wagon.CheckPoints(animal) == true)
@@ -57,9 +58,9 @@ namespace Circustrein
                  
                 }
 
-            }
+            
            
-       // }
+        }
      
 
 

@@ -35,12 +35,11 @@ namespace Circustrein
 
         private void button1_Click(object sender, EventArgs e)
         {
-            train.vleesCheck(leeuw);
-            train.vleesCheck(olifant);
-            train.vleesCheck(aap);
-            train.vleesCheck(konijn);
-            train.vleesCheck(zeehond);
-            train.vleesCheck(parakiet);
+            foreach(Animal animal in train.animals)
+            {
+                train.vleesCheck(animal);
+            }
+           
             ShowWagons();
           
         }
@@ -50,12 +49,11 @@ namespace Circustrein
         {
             foreach (Wagon wagon in train.Wagons)
             {
-
                 listBoxWagons.Items.Add(wagon);
-              //  foreach (Animal animal in wagon.AnimalsInWagon.ToList())
-                //{
-                  //  listBoxAnimals.Items.Add(animal);
-               // }
+               foreach (Animal animal in wagon.AnimalsInWagon.ToList())
+                {
+               listBoxAnimals.Items.Add(animal);
+                }
             }
             listBoxAnimals.DisplayMember = "Info";
             listBoxWagons.DisplayMember = "WagonInfo";
