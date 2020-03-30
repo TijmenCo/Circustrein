@@ -14,16 +14,16 @@ namespace Circustrein
             Middel = 3,
             Groot = 5
         }
-
+        public Points _Points;
         public string Name;
         public string Diet;
-      //  public int Points;
+     
       
         public Animal(string name, string diet, Points points)
         {
             this.Name = name;
             this.Diet = diet;
-            this.Animal.Points = points;
+            this._Points = points;
         }
       
      

@@ -64,8 +64,8 @@ namespace Circustrein
         public void vleesCheck()
         {
         
-            var goodCarnivors = carnivors.Where(z1 => herbivors.Any(z2 => z1.Points < z2.Points));
-            var goodHerbivors = herbivors.Where(y1 => carnivors.Any(y2 => y1.Points > y2.Points));
+            var goodCarnivors = carnivors.Where(z1 => herbivors.Any(z2 => z1._Points < z2._Points));
+            var goodHerbivors = herbivors.Where(y1 => carnivors.Any(y2 => y1._Points > y2._Points));
             if (!goodHerbivors.Any())
             {
                 foreach (Animal animal in goodCarnivors.ToList())
@@ -73,7 +73,7 @@ namespace Circustrein
                     Wagon wagon = new Wagon(10);
                     wagons.Add(wagon);
                     wagon.AnimalsInWagon.Add(animal);
-                    wagon.capacity -= animal.Points;
+                    wagon.capacity -= Convert.ToInt32(animal._Points);
                     carnivors.Remove(animal);
                 }
             }
@@ -84,7 +84,7 @@ namespace Circustrein
                     Wagon wagon = new Wagon(10);
                     wagons.Add(wagon);
                     wagon.AnimalsInWagon.Add(animal);
-                    wagon.capacity -= animal.Points;
+                    wagon.capacity -= Convert.ToInt32(animal._Points);
                     carnivors.Remove(animal);
                     if (goodHerbivors.Any())
                     {
@@ -93,7 +93,7 @@ namespace Circustrein
                             if (wagon.capacity >= 0)
                             {
                                 wagon.AnimalsInWagon.Add(animal2);
-                                wagon.capacity -= animal2.Points;
+                                wagon.capacity -= Convert.ToInt32(animal._Points);
                                 goodHerbivors.ToList().Remove(animal2);
                                 herbivors.Remove(animal2);
                             }
@@ -114,7 +114,7 @@ namespace Circustrein
                     if (herbivors.Any())
                     {
                         wagon.AnimalsInWagon.Add(animal);
-                        wagon.capacity -= animal.Points;
+                        wagon.capacity -= Convert.ToInt32(animal._Points);
                         herbivors.Remove(animal);
 
                     }
