@@ -35,7 +35,12 @@ namespace Circustrein
 
         private void button1_Click(object sender, EventArgs e)
         {
-            train.Start();
+            train.vleesCheck(leeuw);
+            train.vleesCheck(olifant);
+            train.vleesCheck(aap);
+            train.vleesCheck(konijn);
+            train.vleesCheck(zeehond);
+            train.vleesCheck(parakiet);
             ShowWagons();
           
         }
