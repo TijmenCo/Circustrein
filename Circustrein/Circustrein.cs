@@ -17,12 +17,12 @@ namespace Circustrein
       public List<Animal> animals = new List<Animal>();
       public  List<Animal> carnivors = new List<Animal>();
       public  List<Animal> herbivors = new List<Animal>();
-        Animal leeuw = new Animal("Leeuw", "Vlees", 3);
-        Animal olifant = new Animal("Olifant", "Plant", 5);
-        Animal aap = new Animal("Aap", "Plant", 3);
-        Animal konijn = new Animal("Konijn", "Plant", 1);
-        Animal zeehond = new Animal("Zeehond", "Vlees", 3);
-        Animal parakiet = new Animal("Parakiet", "Plant", 1);
+        Animal leeuw = new Animal("Leeuw", "Vlees", Animal.Points.Middel);
+        Animal olifant = new Animal("Olifant", "Plant", Animal.Points.Groot);
+        Animal aap = new Animal("Aap", "Plant", Animal.Points.Middel);
+        Animal konijn = new Animal("Konijn", "Plant", Animal.Points.Klein);
+        Animal zeehond = new Animal("Zeehond", "Vlees", Animal.Points.Middel);
+        Animal parakiet = new Animal("Parakiet", "Plant", Animal.Points.Klein);
    
         public Circustrein()
         {
@@ -38,12 +38,10 @@ namespace Circustrein
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             DivideAnimals();
             vleesCheck();
             plantenCheck();
             ShowWagons();
-  
         }
         public void DivideAnimals()
         {
