@@ -16,61 +16,38 @@ namespace Circustrein
         public Train()
         {
         }
-        public void Start()
+        public void animalCheck(Animal animal)
         {
-         //   vleesCheck();
-            //  DivideAnimals();
 
-            //  plantenCheck();
-        }
-        /*   public void DivideAnimals()
-           {
-               carnivors = animals.Where(p => p._Diet == Animal.Diet.Carnivoor).ToList();
-               herbivors = animals.Where(p => p._Diet == Animal.Diet.Herbivoor).ToList();
-
-        
-    } */ 
-        public void vleesCheck(Animal animal)
-        {
-            
-            //var goodCarnivors = carnivors.Where(z1 => herbivors.Any(z2 => z1._Points < z2._Points));
-            // var goodHerbivors = herbivors.Where(y1 => carnivors.Any(y2 => y1._Points > y2._Points));
-         //   foreach (Animal animal in animals)
-          //  {
-              //  if (!Wagons.Any())
-              //  {
-           //         NewWagon(animal);
-              //  }
-             
-                foreach (Wagon wagon in Wagons)
+          
+            foreach (Wagon wagon in Wagons)
+            {
+                if (wagon.CheckCompatability(animal) && wagon.CheckPoints(animal) == true)
                 {
-                    if (wagon.CheckCompatability(animal) && wagon.CheckPoints(animal) == true)
-                    {
-                        wagon.AnimalsInWagon.Add(animal);
-                        animal.Used = true;
-                        wagon.capacity -= Convert.ToInt32(animal._Points);
-                    } 
-                    
-                }
-                if (!animal.Used)
-                {
-                    NewWagon(animal);
-                 
+                    wagon.AnimalsInWagon.Add(animal);
+                    animal.Used = true;
+                    wagon.capacity -= Convert.ToInt32(animal._Points);
                 }
 
-            
-           
+            }
+            if (!animal.Used)
+            {
+                NewWagon(animal);
+
+            }
+
+
+
         }
-     
+
 
 
         public void NewWagon(Animal animal)
         {
             Wagon wagon = new Wagon(10);
-            //wagon.AnimalsInWagon.Add(animal);
             Wagons.Add(wagon);
-            vleesCheck(animal);
-        } 
+            animalCheck(animal);
+        }
 
     }
 

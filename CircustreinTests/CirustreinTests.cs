@@ -41,15 +41,5 @@ namespace Circustrein.Tests
             Assert.AreEqual(2, countCarnivors);
             Assert.AreEqual(4, countHerbivors);
         }
-        public void MultibleCarnivors()
-        {
-            Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
-            Animal zeehond = new Animal("Zeehond", Animal.Diet.Carnivoor, Animal.Points.Middel);
-            animals.Add(leeuw);
-            animals.Add(leeuw);
-            animals.Add(leeuw);
-            animals.Add(leeuw);
-
-        }
     }
 }

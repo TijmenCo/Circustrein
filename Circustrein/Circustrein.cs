@@ -20,7 +20,7 @@ namespace Circustrein
         Animal konijn = new Animal("Konijn", Animal.Diet.Herbivoor, Animal.Points.Klein);
         Animal zeehond = new Animal("Zeehond", Animal.Diet.Carnivoor, Animal.Points.Middel);
         Animal parakiet = new Animal("Parakiet", Animal.Diet.Herbivoor, Animal.Points.Klein);
-   
+
         public Circustrein()
         {
             InitializeComponent();
@@ -31,36 +31,36 @@ namespace Circustrein
 
         }
 
-       
+
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach(Animal animal in train.animals)
+            foreach (Animal animal in train.animals)
             {
-                train.vleesCheck(animal);
+                train.animalCheck(animal);
             }
-           
+
             ShowWagons();
-          
+
         }
-      
-       
+
+
         public void ShowWagons()
         {
             foreach (Wagon wagon in train.Wagons)
             {
                 listBoxWagons.Items.Add(wagon);
-               foreach (Animal animal in wagon.AnimalsInWagon.ToList())
+                foreach (Animal animal in wagon.AnimalsInWagon.ToList())
                 {
-               listBoxAnimals.Items.Add(animal);
+                    listBoxAnimals.Items.Add(animal);
                 }
             }
             listBoxAnimals.DisplayMember = "Info";
             listBoxWagons.DisplayMember = "WagonInfo";
         }
-       
-       
-        
+
+
+
         public void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             train.animals.Add(leeuw);

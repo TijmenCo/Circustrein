@@ -8,12 +8,12 @@ namespace Circustrein
 {
     public class Wagon
     {
-        
+
         private List<Animal> animalsInWagon = new List<Animal>();
         public int capacity;
         public int maxCapacity;
-          
-      
+
+
         public Wagon(int Capacity)
         {
             this.AnimalsInWagon = AnimalsInWagon;
@@ -29,14 +29,13 @@ namespace Circustrein
         }
         public bool CheckCompatability(Animal animal)
         {
-           foreach(Animal checkAnimal in this.animalsInWagon)
+            foreach (Animal checkAnimal in this.animalsInWagon)
             {
-                //ZELF //animal._Diet == Animal.Diet.Carnivoor && checkAnimal._Diet == Animal.Diet.Carnivoor || animal._Diet == Animal.Diet.Carnivoor && checkAnimal._Points <= animal._Points
-                //GIT  //checkAnimal._Points <= animal._Points && animal._Diet == Animal.Diet.Carnivoor || checkAnimal._Diet == Animal.Diet.Carnivoor && checkAnimal._Points >= animal._Points
+
                 if (checkAnimal._Points <= animal._Points && animal._Diet == Animal.Diet.Carnivoor || checkAnimal._Diet == Animal.Diet.Carnivoor && checkAnimal._Points >= animal._Points)
                 {
                     return false;
-                } 
+                }
             }
             return true;
         }
