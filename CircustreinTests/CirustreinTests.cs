@@ -16,6 +16,10 @@ namespace Circustrein.Tests
         public void TestInitialize()
         {
             animals = new List<Animal>();
+        }
+        [TestMethod()]
+        public void DivideAnimalsTest()
+        {
             Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
             Animal olifant = new Animal("Olifant", Animal.Diet.Herbivoor, Animal.Points.Groot);
             Animal aap = new Animal("Aap", Animal.Diet.Herbivoor, Animal.Points.Middel);
@@ -28,11 +32,6 @@ namespace Circustrein.Tests
             animals.Add(konijn);
             animals.Add(zeehond);
             animals.Add(parakiet);
-
-        }
-        [TestMethod()]
-        public void DivideAnimalsTest()
-        {
             List<Animal> carnivors = new List<Animal>();
             List<Animal> herbivors = new List<Animal>();
             carnivors = animals.Where(p => p._Diet == Animal.Diet.Carnivoor).ToList();
@@ -41,9 +40,16 @@ namespace Circustrein.Tests
             int countHerbivors = herbivors.Count();
             Assert.AreEqual(2, countCarnivors);
             Assert.AreEqual(4, countHerbivors);
-
+        }
+        public void MultibleCarnivors()
+        {
+            Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
+            Animal zeehond = new Animal("Zeehond", Animal.Diet.Carnivoor, Animal.Points.Middel);
+            animals.Add(leeuw);
+            animals.Add(leeuw);
+            animals.Add(leeuw);
+            animals.Add(leeuw);
 
         }
-
     }
 }

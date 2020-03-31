@@ -57,8 +57,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CircustreinTests1.cs" />
     <Compile Include="CirustreinTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WagonTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

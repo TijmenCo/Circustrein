@@ -33,10 +33,10 @@ namespace Circustrein
             {
                 //ZELF //animal._Diet == Animal.Diet.Carnivoor && checkAnimal._Diet == Animal.Diet.Carnivoor || animal._Diet == Animal.Diet.Carnivoor && checkAnimal._Points <= animal._Points
                 //GIT  //checkAnimal._Points <= animal._Points && animal._Diet == Animal.Diet.Carnivoor || checkAnimal._Diet == Animal.Diet.Carnivoor && checkAnimal._Points >= animal._Points
-                if (checkAnimal._Diet == Animal.Diet.Carnivoor && checkAnimal._Points >= animal._Points || checkAnimal._Points <= animal._Points && animal._Diet == Animal.Diet.Carnivoor)
+                if (checkAnimal._Points <= animal._Points && animal._Diet == Animal.Diet.Carnivoor || checkAnimal._Diet == Animal.Diet.Carnivoor && checkAnimal._Points >= animal._Points)
                 {
                     return false;
-                }
+                } 
             }
             return true;
         }

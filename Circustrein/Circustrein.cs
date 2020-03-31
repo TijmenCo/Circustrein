@@ -13,7 +13,7 @@ namespace Circustrein
     public partial class Circustrein : Form
     {
 
-        public static Train train = new Train();
+        public Train train = new Train();
         Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
         Animal olifant = new Animal("Olifant", Animal.Diet.Herbivoor, Animal.Points.Groot);
         Animal aap = new Animal("Aap", Animal.Diet.Herbivoor, Animal.Points.Middel);
