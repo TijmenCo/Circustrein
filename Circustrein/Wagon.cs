@@ -16,9 +16,10 @@ namespace Circustrein
         public Wagon(int Capacity)
         {
             this.AnimalsInWagon = animalsInWagon;
-            this.Capacity = Capacity;
+            this.capacity = Capacity;
         }
-        public int capacity { get => Capacity; }
+
+        public int capacity { get => Capacity; set => Capacity = value; }
     
         public IEnumerable<Animal> AnimalsInWagon { get; }
         public string WagonInfo
@@ -27,6 +28,16 @@ namespace Circustrein
             {
                 return $"{"Wagon:" + capacity}";
             }
+        }
+        public bool fullCheck(Animal animal)
+        {
+            if (CheckPoints(animal) && CheckCompatability(animal))
+            {
+                animalsInWagon.Add(animal);
+                Capacity = Capacity - Convert.ToInt32(animal.points);
+                return true;
+            }
+            return false;
         }
         public bool CheckCompatability(Animal animal)
         {
@@ -38,16 +49,15 @@ namespace Circustrein
                 }
                 
             }
-                this.animalsInWagon.Add(animal);
-                this.Capacity = Capacity - Convert.ToInt32(animal.points);
-                return true;
-      
-          
+            return true;
+
+
+
         }
         public void AddCarnivor(Animal animal)
         {
-            this.animalsInWagon.Add(animal);
-            this.Capacity = Capacity - Convert.ToInt32(animal.points);
+            animalsInWagon.Add(animal);
+            Capacity = Capacity - Convert.ToInt32(animal.points);
         }
         public bool CheckPoints(Animal animal)
         {
