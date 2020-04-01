@@ -32,15 +32,12 @@ namespace Circustrein
         {
             foreach (Animal checkAnimal in this.animalsInWagon)
             {
-
-                if (checkAnimal.points >= animal.points)
+                if (animal.points <= checkAnimal.points)
                 {
                     return false;
                 }
                 
             }
-          
-                animal.used = true;
                 this.animalsInWagon.Add(animal);
                 this.Capacity = Capacity - Convert.ToInt32(animal.points);
                 return true;

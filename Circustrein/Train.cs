@@ -14,28 +14,36 @@ namespace Circustrein
         // public List<Animal> herbivors = new List<Animal>();
         public IEnumerable<Wagon> Wagons { get => wagons; }
         //  public List<Wagon> Wagons { get => wagons; set => wagons = value; }
-        public List<Animal> Animals { get => animals;  set => animals = value; }
+        public List<Animal> Animals { get => animals; set => animals = value; }
         public Train()
         {
 
         }
         public void animalCheck(Animal animal)
         {
-            if(animal.diet == Animal.Diet.Carnivoor)
+            if (animal.diet == Animal.Diet.Carnivoor)
             {
                 NewWagon(animal);
             }
-            foreach (Wagon wagon in Wagons)
+            else
             {
-                if (wagon.CheckCompatability(animal) && wagon.CheckPoints(animal) == true)
+                foreach (Wagon wagon in Wagons)
                 {
+                    if (wagon.CheckPoints(animal) && wagon.CheckCompatability(animal))
+                    {
+                        
+                    }
+                    else
+                    {
+                        NewWagon(animal);
+                    }
                 }
             }
-            if (!animal.used)
-            {
-                NewWagon(animal);
+          //  if (!animal.used)
+          //  {
+           //     NewWagon(animal);
 
-            }
+         //   }
 
         }
 
@@ -48,10 +56,14 @@ namespace Circustrein
                 Wagon wagon = new Wagon(10);
                 wagons.Add(wagon);
                 wagon.AddCarnivor(animal);
+                //animals.Remove(animal);
             }
-            Wagon wagon2 = new Wagon(10);
-            wagons.Add(wagon2);
-            animalCheck(animal);
+            else
+            {
+                Wagon wagon2 = new Wagon(10);
+                wagons.Add(wagon2);
+                animalCheck(animal);
+            }
         }
 
     }

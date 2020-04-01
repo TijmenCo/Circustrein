@@ -35,10 +35,10 @@ namespace Circustrein
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (Animal animal in train.Animals)
+           foreach (Animal animal in train.Animals)
             {
                 train.animalCheck(animal);
-            }
+             }
 
             ShowWagons();
 
