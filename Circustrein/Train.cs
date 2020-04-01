@@ -9,10 +9,12 @@ namespace Circustrein
     public class Train
     {
         private List<Wagon> wagons = new List<Wagon>();
-        public List<Animal> animals = new List<Animal>();
+        private List<Animal> animals = new List<Animal>();
         // public List<Animal> carnivors = new List<Animal>();
         // public List<Animal> herbivors = new List<Animal>();
-        public List<Wagon> Wagons { get => wagons; set => wagons = value; }
+        public IEnumerable<Wagon> Wagons { get => wagons; }
+        //  public List<Wagon> Wagons { get => wagons; set => wagons = value; }
+        public List<Animal> Animals { get => animals; }
         public Train()
         {
         }
@@ -24,7 +26,6 @@ namespace Circustrein
             {
                 if (wagon.CheckCompatability(animal) && wagon.CheckPoints(animal) == true)
                 {
-                    wagon.AnimalsInWagon.Add(animal);
                     animal.Used = true;
                     wagon.capacity -= Convert.ToInt32(animal._Points);
                 }
@@ -45,7 +46,7 @@ namespace Circustrein
         public void NewWagon(Animal animal)
         {
             Wagon wagon = new Wagon(10);
-            Wagons.Add(wagon);
+            wagons.Add(wagon);
             animalCheck(animal);
         }
 

@@ -16,10 +16,11 @@ namespace Circustrein
 
         public Wagon(int Capacity)
         {
-            this.AnimalsInWagon = AnimalsInWagon;
+            this.AnimalsInWagon = animalsInWagon;
             this.capacity = Capacity;
         }
-        public List<Animal> AnimalsInWagon { get => animalsInWagon; set => animalsInWagon = value; }
+      //  public List<Animal> AnimalsInWagon { get => animalsInWagon; set => animalsInWagon = value; }
+        public IEnumerable<Animal> AnimalsInWagon { get; }
         public string WagonInfo
         {
             get
@@ -37,6 +38,7 @@ namespace Circustrein
                     return false;
                 }
             }
+            this.animalsInWagon.Add(animal);
             return true;
         }
         public bool CheckPoints(Animal animal)

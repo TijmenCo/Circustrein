@@ -35,7 +35,7 @@ namespace Circustrein
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (Animal animal in train.animals)
+            foreach (Animal animal in train.Animals)
             {
                 train.animalCheck(animal);
             }
@@ -63,32 +63,32 @@ namespace Circustrein
 
         public void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            train.animals.Add(leeuw);
+            train.Animals.Add(leeuw);
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            train.animals.Add(olifant);
+            train.Animals.Add(olifant);
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            train.animals.Add(aap);
+            train.Animals.Add(aap);
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            train.animals.Add(konijn);
+            train.Animals.Add(konijn);
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            train.animals.Add(zeehond);
+            train.Animals.Add(zeehond);
         }
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
-            train.animals.Add(parakiet);
+            train.Animals.Add(parakiet);
         }
 
         private void label5_Click(object sender, EventArgs e)
