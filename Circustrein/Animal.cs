@@ -17,24 +17,22 @@ namespace Circustrein
         }
         public enum Diet
         {
-            Carnivoor = 0,
-            Herbivoor = 1
+            Carnivoor = 1,
+            Herbivoor = 2
         }
-        private bool Used;
+       
+
         private Points _points;
         private string Name;
         private Diet _diet;
 
 
-
         public Animal(string name, Diet diet, Points points)
         {
-            this.used = Used;
             this.Name = name;
             this._diet = diet;
             this._points = points;
         }
-
         public bool used { get; set; }
         public string name { get => Name; }
         public Points points { get => _points; }

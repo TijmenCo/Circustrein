@@ -33,13 +33,13 @@ namespace Circustrein
             }
         }
        
-        public bool CheckCompatibility(Animal animal)
+        public bool CheckRules(Animal animal)
         {
            
             foreach (Animal animalToCheck in this.AnimalsInWagon)
             {
                
-                if (animalToCheck.points <= animal.points && animal.diet == Animal.Diet.Carnivoor || animalToCheck.diet == Animal.Diet.Carnivoor && animalToCheck.points >= animal.points)
+                if (animalToCheck.diet == Animal.Diet.Carnivoor && animalToCheck.points >= animal.points|| animalToCheck.points <= animal.points && animal.diet == Animal.Diet.Carnivoor)
                 {
                     return false;
                 }

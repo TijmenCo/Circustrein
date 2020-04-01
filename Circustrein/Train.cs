@@ -23,16 +23,12 @@ namespace Circustrein
             foreach (Wagon wagon in Wagons)
             {
 
-                if (wagon.CheckCompatibility(animal) && wagon.CheckPoints(animal))
+                if (wagon.CheckRules(animal) && wagon.CheckPoints(animal))
                 {
-                   
-
                 }
-          
             }
             if (!animal.used)
             {
-
                 NewWagon(animal);
             }
         }
@@ -41,8 +37,8 @@ namespace Circustrein
         public void NewWagon(Animal animal)
         {
             Wagon wagon = new Wagon(10);
-            wagons.Add(wagon);
             animalCheck(animal);
+            wagons.Add(wagon);
         }
 
     }

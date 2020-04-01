@@ -35,7 +35,7 @@ namespace Circustrein.Tests
             animals.Add(leeuw);
             animalsInWagon.Add(olifant);
 
-            if (wagon.CheckCompatability(leeuw) == true)
+            if (wagon.CheckRules(leeuw) == true)
             {
                 succes = true;
             }
@@ -66,8 +66,8 @@ namespace Circustrein.Tests
             animalsInWagon.Add(konijn);
             animalsInWagon.Add(leeuw);
             animalsInWagon.Add(olifant);
-            wagon.capacity -= Convert.ToInt32(olifant._Points);
-            if (wagon.CheckCompatability(olifant) == true)
+            wagon.capacity -= Convert.ToInt32(olifant.points);
+            if (wagon.CheckRules(olifant) == true)
             {
                 succes = true;
 

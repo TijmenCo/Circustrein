@@ -34,8 +34,8 @@ namespace Circustrein.Tests
             animals.Add(parakiet);
             List<Animal> carnivors = new List<Animal>();
             List<Animal> herbivors = new List<Animal>();
-            carnivors = animals.Where(p => p._Diet == Animal.Diet.Carnivoor).ToList();
-            herbivors = animals.Where(p => p._Diet == Animal.Diet.Herbivoor).ToList();
+            carnivors = animals.Where(p => p.diet == Animal.Diet.Carnivoor).ToList();
+            herbivors = animals.Where(p => p.diet == Animal.Diet.Herbivoor).ToList();
             int countCarnivors = carnivors.Count();
             int countHerbivors = herbivors.Count();
             Assert.AreEqual(2, countCarnivors);

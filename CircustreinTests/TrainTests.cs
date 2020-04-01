@@ -20,7 +20,7 @@ namespace Circustrein.Tests
             Wagon wagon = new Wagon(10);
             train.NewWagon(leeuw);
             train.animalCheck(leeuw);
-            if (leeuw.Used == true)
+            if (leeuw.used == true)
             {
                 succes = true;
             }
