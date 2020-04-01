@@ -33,7 +33,7 @@ namespace Circustrein
             foreach (Animal checkAnimal in this.animalsInWagon)
             {
 
-                if (checkAnimal._Points <= animal._Points && animal._Diet == Animal.Diet.Carnivoor || checkAnimal._Diet == Animal.Diet.Carnivoor && checkAnimal._Points >= animal._Points)
+                if (checkAnimal.points <= animal.points && animal.diet == Animal.Diet.Carnivoor || checkAnimal.diet == Animal.Diet.Carnivoor && checkAnimal.points >= animal.points)
                 {
                     return false;
                 }
@@ -43,7 +43,7 @@ namespace Circustrein
         }
         public bool CheckPoints(Animal animal)
         {
-            if (this.capacity - animal._Points >= 0)
+            if (this.capacity - animal.points >= 0)
             {
                 return true;
             }
