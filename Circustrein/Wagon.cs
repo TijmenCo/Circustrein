@@ -10,16 +10,16 @@ namespace Circustrein
     {
 
         private List<Animal> animalsInWagon = new List<Animal>();
-        public int capacity;
-        public int maxCapacity;
-
+        private int Capacity;
+       
 
         public Wagon(int Capacity)
         {
             this.AnimalsInWagon = animalsInWagon;
-            this.capacity = Capacity;
+            this.Capacity = Capacity;
         }
-      //  public List<Animal> AnimalsInWagon { get => animalsInWagon; set => animalsInWagon = value; }
+        public int capacity { get => Capacity; }
+    
         public IEnumerable<Animal> AnimalsInWagon { get; }
         public string WagonInfo
         {
@@ -37,9 +37,15 @@ namespace Circustrein
                 {
                     return false;
                 }
+                
             }
-            this.animalsInWagon.Add(animal);
-            return true;
+          
+                animal.Used = true;
+                this.animalsInWagon.Add(animal);
+                this.Capacity = Capacity - Convert.ToInt32(animal.points);
+                return true;
+      
+          
         }
         public bool CheckPoints(Animal animal)
         {

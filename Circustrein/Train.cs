@@ -14,7 +14,7 @@ namespace Circustrein
         // public List<Animal> herbivors = new List<Animal>();
         public IEnumerable<Wagon> Wagons { get => wagons; }
         //  public List<Wagon> Wagons { get => wagons; set => wagons = value; }
-        public List<Animal> Animals { get => animals; }
+        public List<Animal> Animals { get => animals;  set => animals = value; }
         public Train()
         {
         }
@@ -26,8 +26,7 @@ namespace Circustrein
             {
                 if (wagon.CheckCompatability(animal) && wagon.CheckPoints(animal) == true)
                 {
-                    animal.Used = true;
-                    wagon.capacity -= Convert.ToInt32(animal._Points);
+                    
                 }
 
             }

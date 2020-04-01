@@ -21,18 +21,20 @@ namespace Circustrein
             Herbivoor = 1
         }
         public bool Used;
-        public Points _Points;
-        public string Name;
-        public Diet _Diet;
+        private Points _points;
+        private string Name;
+        private Diet _diet;
 
 
         public Animal(string name, Diet diet, Points points)
         {
             this.Name = name;
-            this._Diet = diet;
-            this._Points = points;
+            this._diet = diet;
+            this._points = points;
         }
-
+        public string name { get => Name; }
+        public Points points { get => _points; }
+        public Diet diet { get => _diet; }
 
 
         public string Info
