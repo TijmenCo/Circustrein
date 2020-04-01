@@ -33,19 +33,24 @@ namespace Circustrein
             foreach (Animal checkAnimal in this.animalsInWagon)
             {
 
-                if (checkAnimal.points <= animal.points && animal.diet == Animal.Diet.Carnivoor || checkAnimal.diet == Animal.Diet.Carnivoor && checkAnimal.points >= animal.points)
+                if (checkAnimal.points >= animal.points)
                 {
                     return false;
                 }
                 
             }
           
-                animal.Used = true;
+                animal.used = true;
                 this.animalsInWagon.Add(animal);
                 this.Capacity = Capacity - Convert.ToInt32(animal.points);
                 return true;
       
           
+        }
+        public void AddCarnivor(Animal animal)
+        {
+            this.animalsInWagon.Add(animal);
+            this.Capacity = Capacity - Convert.ToInt32(animal.points);
         }
         public bool CheckPoints(Animal animal)
         {

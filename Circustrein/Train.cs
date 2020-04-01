@@ -17,26 +17,25 @@ namespace Circustrein
         public List<Animal> Animals { get => animals;  set => animals = value; }
         public Train()
         {
+
         }
         public void animalCheck(Animal animal)
         {
-
-          
+            if(animal.diet == Animal.Diet.Carnivoor)
+            {
+                NewWagon(animal);
+            }
             foreach (Wagon wagon in Wagons)
             {
                 if (wagon.CheckCompatability(animal) && wagon.CheckPoints(animal) == true)
                 {
-                    
                 }
-
             }
-            if (!animal.Used)
+            if (!animal.used)
             {
                 NewWagon(animal);
 
             }
-
-
 
         }
 
@@ -44,8 +43,14 @@ namespace Circustrein
 
         public void NewWagon(Animal animal)
         {
-            Wagon wagon = new Wagon(10);
-            wagons.Add(wagon);
+            if (animal.diet == Animal.Diet.Carnivoor)
+            {
+                Wagon wagon = new Wagon(10);
+                wagons.Add(wagon);
+                wagon.AddCarnivor(animal);
+            }
+            Wagon wagon2 = new Wagon(10);
+            wagons.Add(wagon2);
             animalCheck(animal);
         }
 
