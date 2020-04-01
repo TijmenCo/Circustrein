@@ -11,7 +11,12 @@ namespace Circustrein
         private List<Wagon> wagons = new List<Wagon>();
         private List<Animal> animals = new List<Animal>();
         public IEnumerable<Wagon> Wagons { get => wagons; }
+<<<<<<< HEAD
         public List<Animal> Animals { get => animals; set => animals = value; }
+=======
+        //  public List<Wagon> Wagons { get => wagons; set => wagons = value; }
+        public List<Animal> Animals { get => animals; }
+>>>>>>> parent of 666d1f1... Encapsulation werkt nu met oude Algoritme
         public Train()
         {
 
@@ -20,7 +25,16 @@ namespace Circustrein
         {
             if (animal.diet == Animal.Diet.Carnivoor)
             {
+<<<<<<< HEAD
                 NewWagon(animal);
+=======
+                if (wagon.CheckCompatability(animal) && wagon.CheckPoints(animal) == true)
+                {
+                    animal.Used = true;
+                    wagon.capacity -= Convert.ToInt32(animal._Points);
+                }
+
+>>>>>>> parent of 666d1f1... Encapsulation werkt nu met oude Algoritme
             }
             else
             {

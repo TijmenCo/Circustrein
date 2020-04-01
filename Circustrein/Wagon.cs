@@ -10,17 +10,22 @@ namespace Circustrein
     {
 
         private List<Animal> animalsInWagon = new List<Animal>();
-        private int Capacity;
-       
+        public int capacity;
+        public int maxCapacity;
+
 
         public Wagon(int Capacity)
         {
             this.AnimalsInWagon = animalsInWagon;
             this.capacity = Capacity;
         }
+<<<<<<< HEAD
 
         public int capacity { get => Capacity; set => Capacity = value; }
     
+=======
+      //  public List<Animal> AnimalsInWagon { get => animalsInWagon; set => animalsInWagon = value; }
+>>>>>>> parent of 666d1f1... Encapsulation werkt nu met oude Algoritme
         public IEnumerable<Animal> AnimalsInWagon { get; }
         public string WagonInfo
         {
@@ -47,8 +52,8 @@ namespace Circustrein
                 {
                     return false;
                 }
-                
             }
+<<<<<<< HEAD
             return true;
 
 
@@ -58,6 +63,10 @@ namespace Circustrein
         {
             animalsInWagon.Add(animal);
             Capacity = Capacity - Convert.ToInt32(animal.points);
+=======
+            this.animalsInWagon.Add(animal);
+            return true;
+>>>>>>> parent of 666d1f1... Encapsulation werkt nu met oude Algoritme
         }
         public bool CheckPoints(Animal animal)
         {
