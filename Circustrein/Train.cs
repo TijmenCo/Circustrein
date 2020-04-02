@@ -18,6 +18,18 @@ namespace Circustrein
         {
 
         }
+        public void DivideAnimals(Animal animal)
+        {
+            if(animal.diet == Animal.Diet.Carnivoor)
+            {
+                NewWagonCarnivor(animal);
+            }
+            else
+            {
+                 animalCheck(animal);
+            }
+           
+        }
         public void animalCheck(Animal animal)
         {
             foreach (Wagon wagon in Wagons)
@@ -34,7 +46,12 @@ namespace Circustrein
             }
         }
 
-
+        public void NewWagonCarnivor(Animal animal)
+        {
+            Wagon wagon = new Wagon(10);
+            wagon.AddCarnivors(animal);
+            wagons.Add(wagon);
+        }
         public void NewWagon(Animal animal)
         {
             Wagon wagon = new Wagon(10);

@@ -39,14 +39,11 @@ namespace Circustrein
             foreach (Animal animalToCheck in this.AnimalsInWagon)
             {
                
-                if (animalToCheck.diet == Animal.Diet.Carnivoor && animalToCheck.points >= animal.points|| animalToCheck.points <= animal.points && animal.diet == Animal.Diet.Carnivoor)
+                if (animalToCheck.diet == Animal.Diet.Carnivoor && animal.diet == Animal.Diet.Carnivoor || animalToCheck.diet == Animal.Diet.Carnivoor && animal.points <= animalToCheck.points)
                 {
                     return false;
                 }
             }
-            animalsInWagon.Add(animal);
-            animal.used = true;
-            capacity -= Convert.ToInt32(animal.points);
             return true;
         }
 
@@ -54,13 +51,21 @@ namespace Circustrein
         {
             if (this.capacity - animal.points >= 0)
             {
-  
+                animalsInWagon.Add(animal);
+                animal.used = true;
+                capacity -= Convert.ToInt32(animal.points);
                 return true;
             }
             else
             {
                 return false;
             }
+        }
+        public void AddCarnivors(Animal animal)
+        {
+            animalsInWagon.Add(animal);
+            capacity -= Convert.ToInt32(animal.points);
+            animal.used = true;
         }
     }
 }

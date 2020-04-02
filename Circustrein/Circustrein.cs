@@ -35,7 +35,7 @@ namespace Circustrein
         {
            foreach (Animal animal in train.Animals)
             {
-                train.animalCheck(animal);
+                train.DivideAnimals(animal);
              }
 
             ShowWagons();
