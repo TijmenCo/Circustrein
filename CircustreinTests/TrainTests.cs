@@ -12,24 +12,47 @@ namespace Circustrein.Tests
     public class TrainTests
     {
         [TestMethod()]
-        public void NewAnimalCheckTest()
+        public void DivideAnimalsTest()
+        {
+            int count = 0;
+            Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
+            Animal olifant = new Animal("Olifant", Animal.Diet.Herbivoor, Animal.Points.Groot);
+            List<Animal> animals = new List<Animal>();
+            animals.Add(leeuw);
+            animals.Add(olifant);
+            Train train = new Train();
+            foreach (Animal animal in animals)
+            {
+                train.DivideAnimals(animal);
+                if (animal.used == true)
+                {
+                    count++;
+                }
+                else
+                {
+                }
+            }
+
+            Assert.AreEqual(2, count);
+
+        }
+
+        [TestMethod()]
+        public void WagonCheckTest()
         {
             bool succes;
-            Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
+            Animal olifant = new Animal("Olifant", Animal.Diet.Herbivoor, Animal.Points.Groot);
             Train train = new Train();
-            Wagon wagon = new Wagon(10);
-            train.NewWagon(leeuw);
-            train.animalCheck(leeuw);
-            if (leeuw.used == true)
+            train.WagonCheck(olifant);
+
+            if(train.Wagons.Any())
             {
                 succes = true;
             }
-            else
             {
                 succes = false;
             }
             Assert.AreEqual(true, succes);
-
         }
     }
 }
