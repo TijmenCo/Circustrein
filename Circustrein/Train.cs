@@ -25,6 +25,7 @@ namespace Circustrein
 
                 if (wagon.CheckRules(animal) && wagon.CheckPoints(animal))
                 {
+
                 }
             }
             if (!animal.used)
@@ -37,8 +38,8 @@ namespace Circustrein
         public void NewWagon(Animal animal)
         {
             Wagon wagon = new Wagon(10);
-            animalCheck(animal);
             wagons.Add(wagon);
+            animalCheck(animal);
         }
 
     }

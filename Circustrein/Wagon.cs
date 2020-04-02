@@ -54,6 +54,7 @@ namespace Circustrein
         {
             if (this.capacity - animal.points >= 0)
             {
+  
                 return true;
             }
             else
