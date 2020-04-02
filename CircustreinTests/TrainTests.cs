@@ -14,6 +14,7 @@ namespace Circustrein.Tests
         [TestMethod()]
         public void DivideAnimalsTest()
         {
+            //Check of beide dieren worden gebruikt ondanks dat herbivoor/carnivoor zijn.
             int count = 0;
             Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
             Animal olifant = new Animal("Olifant", Animal.Diet.Herbivoor, Animal.Points.Groot);
@@ -40,6 +41,7 @@ namespace Circustrein.Tests
         [TestMethod()]
         public void WagonCheckTest()
         {
+        //Check als het dier wordt geparsed en er een nieuwe wagon wordt aangemaakt.
             bool succes;
             Animal olifant = new Animal("Olifant", Animal.Diet.Herbivoor, Animal.Points.Groot);
             Train train = new Train();
@@ -49,6 +51,7 @@ namespace Circustrein.Tests
             {
                 succes = true;
             }
+            else
             {
                 succes = false;
             }

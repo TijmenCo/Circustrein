@@ -24,6 +24,7 @@ namespace Circustrein.Tests
         [TestMethod()]
         public void CheckCompatabilityTest()
         {
+            //Check als het algoritme werkt door een olifant en leeuw toe te voegen. Dit lukt omdat de olifant een herbivoor en groter is dan de leeuw. 
             Wagon wagon = new Wagon(10);
             bool succes;
             Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
@@ -53,7 +54,7 @@ namespace Circustrein.Tests
         [TestMethod()]
         public void CheckPointsTest()
         {
-
+            //Check als de punten goed van de capacity van de wagon worden afgetrokken. (Er zit al een olifant in dus er zijn 5 resterende punten).
             bool succes;
             Wagon wagon = new Wagon(10);
             Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
@@ -62,10 +63,10 @@ namespace Circustrein.Tests
             Animal konijn = new Animal("Konijn", Animal.Diet.Herbivoor, Animal.Points.Klein);
             Animal zeehond = new Animal("Zeehond", Animal.Diet.Carnivoor, Animal.Points.Middel);
             Animal parakiet = new Animal("Parakiet", Animal.Diet.Herbivoor, Animal.Points.Klein);
-            animalsInWagon.Add(aap);
-            animalsInWagon.Add(konijn);
-            animalsInWagon.Add(leeuw);
-            animalsInWagon.Add(olifant);
+            animalsInWagon.Add(aap); //3
+            animalsInWagon.Add(konijn); //1
+            animalsInWagon.Add(leeuw); //3
+            animalsInWagon.Add(olifant); //5
             wagon.capacity -= Convert.ToInt32(olifant.points);
             if (wagon.CheckRules(olifant) == true)
             {
