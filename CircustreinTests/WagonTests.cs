@@ -35,16 +35,7 @@ namespace Circustrein.Tests
             Animal parakiet = new Animal("Parakiet", Animal.Diet.Herbivoor, Animal.Points.Klein);
             animals.Add(olifant);
             animalsInWagon.Add(leeuw);
-
-            if (wagon.CheckRulesHerbivor(olifant) == true)
-            {
-                succes = true;
-            }
-            else
-            {
-                succes = false;
-            }
-
+            succes = wagon.CheckRulesHerbivor(olifant);
             Assert.AreEqual(true, succes);
 
 
@@ -68,15 +59,7 @@ namespace Circustrein.Tests
             animalsInWagon.Add(leeuw); //3
             animalsInWagon.Add(olifant); //5
             wagon.capacity -= Convert.ToInt32(olifant.points);
-            if (wagon.CheckRulesHerbivor(olifant) == true)
-            {
-                succes = true;
-
-            }
-            else
-            {
-                succes = false;
-            }
+            succes = wagon.CheckPointsHerbivor(olifant);
             Assert.AreEqual(true, succes);
 
 

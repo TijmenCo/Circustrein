@@ -20,6 +20,7 @@ namespace Circustrein.Tests
         [TestMethod()]
         public void DivideAnimalsTest()
         {
+            //Test om te kijken als LINQ queries werken.
             Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
             Animal olifant = new Animal("Olifant", Animal.Diet.Herbivoor, Animal.Points.Groot);
             Animal aap = new Animal("Aap", Animal.Diet.Herbivoor, Animal.Points.Middel);

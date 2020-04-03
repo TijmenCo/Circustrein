@@ -10,19 +10,16 @@ namespace Circustrein
     {
 
         private List<Animal> animalsInWagon = new List<Animal>();
-        private int Capacity;
- 
-
 
         public Wagon(int Capacity)
         {
             this.AnimalsInWagon = animalsInWagon;
-            this.Capacity = Capacity;
+            this.capacity = Capacity;
         }
 
 
-        public int capacity { get => Capacity; set => Capacity = value; }
-    
+        public int capacity { get; set; }
+
         public IEnumerable<Animal> AnimalsInWagon { get; }
         public string WagonInfo
         {
