@@ -23,7 +23,6 @@ namespace Circustrein
 
         public int capacity { get => Capacity; set => Capacity = value; }
     
-
         public IEnumerable<Animal> AnimalsInWagon { get; }
         public string WagonInfo
         {
@@ -50,7 +49,7 @@ namespace Circustrein
         public bool CheckRules(Animal animal)
         {
            
-            foreach (Animal animalToCheck in this.AnimalsInWagon)
+            foreach (Animal animalToCheck in AnimalsInWagon)
             {
                
                 if (animalToCheck.diet == Animal.Diet.Carnivoor && animal.diet == Animal.Diet.Carnivoor || animalToCheck.diet == Animal.Diet.Carnivoor && animal.points <= animalToCheck.points)
@@ -63,7 +62,7 @@ namespace Circustrein
 
         public bool CheckPoints(Animal animal)
         {
-            if (this.capacity - animal.points >= 0)
+            if (capacity - animal.points >= 0)
             { 
                 return true;
             }

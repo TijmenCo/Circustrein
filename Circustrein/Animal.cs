@@ -20,23 +20,17 @@ namespace Circustrein
             Carnivoor = 1,
             Herbivoor = 2
         }
-       
-
-        private Points _points;
-        private string Name;
-        private Diet _diet;
-
 
         public Animal(string name, Diet diet, Points points)
         {
-            this.Name = name;
-            this._diet = diet;
-            this._points = points;
+            this.name = name;
+            this.diet = diet;
+            this.points = points;
         }
         public bool used { get; set; }
-        public string name { get => Name; }
-        public Points points { get => _points; }
-        public Diet diet { get => _diet; }
+        public string name { get; }
+        public Points points { get; }
+        public Diet diet { get; }
 
 
 
@@ -44,7 +38,7 @@ namespace Circustrein
         {
             get
             {
-                return $"{Name}";
+                return $"{name}";
             }
         }
     }
