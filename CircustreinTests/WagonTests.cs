@@ -33,10 +33,10 @@ namespace Circustrein.Tests
             Animal konijn = new Animal("Konijn", Animal.Diet.Herbivoor, Animal.Points.Klein);
             Animal zeehond = new Animal("Zeehond", Animal.Diet.Carnivoor, Animal.Points.Middel);
             Animal parakiet = new Animal("Parakiet", Animal.Diet.Herbivoor, Animal.Points.Klein);
-            animals.Add(leeuw);
-            animalsInWagon.Add(olifant);
+            animals.Add(olifant);
+            animalsInWagon.Add(leeuw);
 
-            if (wagon.CheckRules(leeuw) == true)
+            if (wagon.CheckRulesHerbivor(olifant) == true)
             {
                 succes = true;
             }
@@ -68,7 +68,7 @@ namespace Circustrein.Tests
             animalsInWagon.Add(leeuw); //3
             animalsInWagon.Add(olifant); //5
             wagon.capacity -= Convert.ToInt32(olifant.points);
-            if (wagon.CheckRules(olifant) == true)
+            if (wagon.CheckRulesHerbivor(olifant) == true)
             {
                 succes = true;
 

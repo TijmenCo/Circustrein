@@ -22,7 +22,7 @@ namespace Circustrein
         {
             if(animal.diet == Animal.Diet.Carnivoor)
             {
-                NewWagonCarnivor(animal);
+                NewWagon(animal);
             }
             else
             {
@@ -34,27 +34,29 @@ namespace Circustrein
         {
             foreach (Wagon wagon in Wagons)
             {
-                if(wagon.HerbivorCheck(wagon, animal) == true)
-                {
-                }   
+                wagon.HerbivorCheck(wagon, animal);
+                 
             }
             if (!animal.used)
             {
-                NewWagonHerbivor(animal);
+                NewWagon(animal);
             }
         }
 
-        public void NewWagonCarnivor(Animal animal)
+        public void NewWagon(Animal animal)
         {
-            Wagon wagon = new Wagon(10);
-            wagon.AddCarnivors(animal);
-            wagons.Add(wagon);
-        }
-        public void NewWagonHerbivor(Animal animal)
-        {
-            Wagon wagon = new Wagon(10);
-            wagons.Add(wagon);
-            WagonCheck(animal);
+            if(animal.diet == Animal.Diet.Carnivoor)
+            {
+                Wagon wagon = new Wagon(10);
+                wagon.AddAnimal(animal);
+                wagons.Add(wagon);
+            }
+            else
+            {
+                Wagon wagon = new Wagon(10);
+                wagons.Add(wagon);
+                WagonCheck(animal);
+            }
         }
 
     }

@@ -31,22 +31,15 @@ namespace Circustrein
                 return $"{"Wagon:" + capacity}";
             }
         }
-       public bool HerbivorCheck(Wagon wagon, Animal animal)
+       public void HerbivorCheck(Wagon wagon, Animal animal)
         {
-            if (wagon.CheckRules(animal) && wagon.CheckPoints(animal))
+            if (wagon.CheckRulesHerbivor(animal) && wagon.CheckPointsHerbivor(animal))
             {
-                animalsInWagon.Add(animal);
-                animal.used = true;
-                capacity -= Convert.ToInt32(animal.points);
-                return true;
+                AddAnimal(animal);
             }
-            else
-            {
-                return false;
-            }
-
+          
         }
-        public bool CheckRules(Animal animal)
+        public bool CheckRulesHerbivor(Animal animal)
         {
            
             foreach (Animal animalToCheck in AnimalsInWagon)
@@ -60,7 +53,7 @@ namespace Circustrein
             return true;
         }
 
-        public bool CheckPoints(Animal animal)
+        public bool CheckPointsHerbivor(Animal animal)
         {
             if (capacity - animal.points >= 0)
             { 
@@ -71,11 +64,11 @@ namespace Circustrein
                 return false;
             }
         }
-        public void AddCarnivors(Animal animal)
+        public void AddAnimal(Animal animal)
         {
-            animalsInWagon.Add(animal);
-            capacity -= Convert.ToInt32(animal.points);
-            animal.used = true;
+                animalsInWagon.Add(animal);
+                capacity -= Convert.ToInt32(animal.points);
+                animal.used = true;     
         }
     }
 }
