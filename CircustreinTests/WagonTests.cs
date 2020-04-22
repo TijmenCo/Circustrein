@@ -19,7 +19,7 @@ namespace Circustrein.Tests
         }
 
         [TestMethod()]
-        public void CheckRulesHerbivorCheck()
+        public void CheckRulesHerbivorCheck_HerbivorAndCarnivor_True()
         {
             //Check als het algoritme werkt door een olifant en leeuw toe te voegen. Dit lukt omdat de olifant een herbivoor en groter is dan de leeuw. 
             Wagon wagon = new Wagon(10);
@@ -36,7 +36,7 @@ namespace Circustrein.Tests
 
 
         [TestMethod()]
-        public void CheckPointsTest()
+        public void CheckPoints_CapacityStaysAboveZero_True()
         {
             //Check als de punten goed van de capacity van de wagon worden afgetrokken. (Er zit al een olifant in dus er zijn 5 resterende punten).
             Wagon wagon = new Wagon(10);

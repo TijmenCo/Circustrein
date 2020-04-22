@@ -18,7 +18,7 @@ namespace Circustrein.Tests
             animals = new List<Animal>();
         }
         [TestMethod()]
-        public void DivideAnimalsTest()
+        public void DivideAnimals_CarnivorsAndHerbivorsAreSepperated_true()
         {
             //Test om te kijken als LINQ queries werken.
             Animal leeuw = new Animal("Leeuw", Animal.Diet.Carnivoor, Animal.Points.Middel);
