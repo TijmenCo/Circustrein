@@ -30,7 +30,7 @@ namespace Circustrein
             }
            
         }
-        public void WagonCheck(Animal animal)
+        private void WagonCheck(Animal animal)
         {
             foreach (Wagon wagon in Wagons)
             {
@@ -43,7 +43,7 @@ namespace Circustrein
             }
         }
 
-        public void NewWagon(Animal animal)
+        private void NewWagon(Animal animal)
         {
             if(animal.diet == Animal.Diet.Carnivoor)
             {

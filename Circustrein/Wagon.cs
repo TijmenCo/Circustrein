@@ -28,6 +28,7 @@ namespace Circustrein
                 return $"{"Wagon:" + capacity}";
             }
         }
+     
        public void HerbivorCheck(Wagon wagon, Animal animal)
         {
             if (wagon.CheckRulesHerbivor(animal) && wagon.CheckPointsHerbivor(animal))
@@ -36,7 +37,7 @@ namespace Circustrein
             }
           
         }
-        public bool CheckRulesHerbivor(Animal animal)
+        private bool CheckRulesHerbivor(Animal animal)
         {
            
             foreach (Animal animalToCheck in AnimalsInWagon)
@@ -50,7 +51,7 @@ namespace Circustrein
             return true;
         }
 
-        public bool CheckPointsHerbivor(Animal animal)
+        private bool CheckPointsHerbivor(Animal animal)
         {
             if (capacity - animal.points >= 0)
             { 
